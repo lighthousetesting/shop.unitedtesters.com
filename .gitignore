@@ -28,3 +28,4 @@ hs_err_pid*
 /.project
 /*/.settings/
 /regression-tests/allure-results/
+/regression-tests/.allure/
