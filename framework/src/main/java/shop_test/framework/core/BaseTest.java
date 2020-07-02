@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
 
@@ -24,6 +25,10 @@ public class BaseTest {
         } else {
             driver = new ChromeDriver();
         }
+    }
+
+    public void open(String URL){
+        driver.get(URL);
     }
 
     @AfterSuite
