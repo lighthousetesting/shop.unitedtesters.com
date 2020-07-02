@@ -1,4 +1,4 @@
-package shop_test.pageobjects.homepage;
+package shop_test.pageobjects;
 
 
 import org.openqa.selenium.WebDriver;
