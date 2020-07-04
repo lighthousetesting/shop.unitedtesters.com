@@ -1,7 +1,11 @@
-<suite name="Test-Suite" >
-    <test name="ToolsQA" >
+<suite name="Regression Suite" >
+    <test name="HomePage Tests" >
         <classes>
             <class name="ShopHomePageTests" />
         </classes>
     </test>
+
+    <parameter name="base-url" value="https://shop.unitedtesters.com/" />
+    <parameter name="page-size" value="21" />
+
 </suite>
