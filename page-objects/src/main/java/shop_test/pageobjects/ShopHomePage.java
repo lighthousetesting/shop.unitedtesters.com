@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import shop_test.framework.core.BasePage;
 
 import java.util.List;
-
+/**p */
 /**
  * This is a page object model for Home page
  * @author  Sinisa Vrhovac
@@ -23,7 +23,7 @@ public class ShopHomePage extends BasePage {
      *
      * @param driver An instance of web driver
      */
-    public ShopHomePage(WebDriver driver) {
+    public ShopHomePage(final WebDriver driver) {
         super(driver);
     }
 
