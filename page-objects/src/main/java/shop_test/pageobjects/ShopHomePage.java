@@ -13,10 +13,11 @@ import java.util.List;
  * @author  Sinisa Vrhovac
  * @version 0.1
  */
+
 public class ShopHomePage extends BasePage {
 
     private static By homeCartBtn = By.cssSelector("div#_desktop_cart a");
-    private static By homeProducts = By.cssSelector("section#content div.products  article");
+    private static By homeProducts = By.cssSelector("section#content div.products article");
 
     /**
      * Instantiate an object instance and its parent
