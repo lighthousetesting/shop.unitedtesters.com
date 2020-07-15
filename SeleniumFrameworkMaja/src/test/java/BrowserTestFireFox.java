@@ -9,7 +9,7 @@ public class BrowserTestFireFox {
 	    String projectPath =System.getProperty("user.dir");
 	    System.out.println("projectPath : "+ projectPath);
 		
-		//set path for geckodriver
+		
 		System.setProperty("webdriver.gecko.driver",projectPath+ "\\Drajveri\\geackodriver\\geckodriver.exe");
 		
 		WebDriver driver = new FirefoxDriver();
