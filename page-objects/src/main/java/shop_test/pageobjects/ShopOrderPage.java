@@ -22,6 +22,8 @@ public class ShopOrderPage extends BasePage {
 	private static By iAgreePrivacy = By.xpath("//input[@name='psgdpr']");
 	private static By continueBtn1 = By
 			.xpath("//footer[@class='form-footer clearfix']//button[@name='continue'][contains(text(),'Continue')]");
+	
+	
 
 	// Address form - mandatory fields locators
 	private static By addressField = By.xpath("//input[@name='address1']");
@@ -39,6 +41,7 @@ public class ShopOrderPage extends BasePage {
 	private static By iAgreeTandC = By.id("conditions_to_approve[terms-and-conditions]");
 	private static By orderBtn = By.xpath("//button[@class='btn btn-primary center-block']");
 
+	
 	
 	
 	/**
@@ -210,6 +213,12 @@ public class ShopOrderPage extends BasePage {
 		getFirstNameField().sendKeys(firstName);
 		
 	}
+	
+	public void inputLastNameField(String lastName) {
+		getLastNameField().sendKeys(lastName);		
+	}
+	
+	
 }
 
 //
