@@ -21,7 +21,7 @@ public class ShopHomePageTests extends BaseTest {
      */
     @BeforeTest
     @Parameters ("base-url")
-    public void openPage (String URL){
+    public void openPage (@Optional("https://shop.unitedtesters.com/") String URL){
         this.open(URL);
     }
 
@@ -39,7 +39,7 @@ public class ShopHomePageTests extends BaseTest {
     @Story("R_001 - Display products on home page")
     @Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-3")
     @Feature("AC02 - Maximum number of products displayed is 20;")
-    public void ShopHomePageProductCountTest (int expectedSize) {
+    public void ShopHomePageProductCountTest (@Optional("20") int expectedSize) {
         ShopHomePage homePage = new ShopHomePage(getDriver());
         int size = homePage.getHomeProducts().size();
         sa.assertEquals(size, expectedSize);

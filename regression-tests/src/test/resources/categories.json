@@ -6,7 +6,7 @@
   {
     "name": "Infrastructure problems",
     "matchedStatuses": ["broken", "failed"],
-    "messageRegex": "*"
+    "messageRegex": ".*"
   },
   {
     "name": "Outdated tests",
