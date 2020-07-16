@@ -10,7 +10,7 @@ import shop_test.framework.core.BasePage;
  * This is a page object model for Order page
  * 
  * @author Ljiljana Vrhovac-Kapor
- * @version 0.1
+ * @version 0.2
  */
 
 public class ShopOrderPage extends BasePage {
@@ -22,8 +22,6 @@ public class ShopOrderPage extends BasePage {
 	private static By iAgreePrivacy = By.xpath("//input[@name='psgdpr']");
 	private static By continueBtn1 = By
 			.xpath("//footer[@class='form-footer clearfix']//button[@name='continue'][contains(text(),'Continue')]");
-	
-	
 
 	// Address form - mandatory fields locators
 	private static By addressField = By.xpath("//input[@name='address1']");
@@ -41,9 +39,6 @@ public class ShopOrderPage extends BasePage {
 	private static By iAgreeTandC = By.id("conditions_to_approve[terms-and-conditions]");
 	private static By orderBtn = By.xpath("//button[@class='btn btn-primary center-block']");
 
-	
-	
-	
 	/**
 	 * Instantiate an object instance and its parent
 	 *
@@ -54,7 +49,7 @@ public class ShopOrderPage extends BasePage {
 
 	}
 
-	//Elements geters methods
+	// Elements geters methods
 	/**
 	 * Finds and returns First Name Field.
 	 *
@@ -90,12 +85,11 @@ public class ShopOrderPage extends BasePage {
 	 *
 	 * @return I Agree Privacy Check Box
 	 */
-	public WebElement IAgreePrivacy() {
+	public WebElement getIAgreePrivacy() {
 		waitForElementToAppear(iAgreePrivacy);
 		return this.driver.findElement(iAgreePrivacy);
 	}
-	
-	
+
 	/**
 	 * Finds and returns Continue Button on Personal Info form.
 	 *
@@ -105,7 +99,7 @@ public class ShopOrderPage extends BasePage {
 		waitForElementToAppear(continueBtn1);
 		return this.driver.findElement(continueBtn1);
 	}
-	
+
 	/**
 	 * Finds and returns Address Field.
 	 *
@@ -115,7 +109,7 @@ public class ShopOrderPage extends BasePage {
 		waitForElementToAppear(addressField);
 		return this.driver.findElement(addressField);
 	}
-	
+
 	/**
 	 * Finds and returns City Field.
 	 *
@@ -125,7 +119,6 @@ public class ShopOrderPage extends BasePage {
 		waitForElementToAppear(cityField);
 		return this.driver.findElement(cityField);
 	}
-	
 
 	/**
 	 * Finds and returns State Dropdown.
@@ -146,7 +139,6 @@ public class ShopOrderPage extends BasePage {
 		waitForElementToAppear(postalCodeField);
 		return this.driver.findElement(postalCodeField);
 	}
-	
 
 	/**
 	 * Finds and returns Continue Button on Address form.
@@ -157,17 +149,17 @@ public class ShopOrderPage extends BasePage {
 		waitForElementToAppear(continueBtn2);
 		return this.driver.findElement(continueBtn2);
 	}
-	
+
 	/**
 	 * Finds and returns Cerrier CheckBox.
 	 *
-	 * @return  returns Cerrier CheckBox
+	 * @return returns Cerrier CheckBox
 	 */
 	public WebElement getCerrierChechBox() {
 		waitForElementToAppear(MyCarrierCB);
 		return this.driver.findElement(MyCarrierCB);
 	}
-	
+
 	/**
 	 * Finds and returns Continue Button on Shipping form.
 	 *
@@ -181,23 +173,23 @@ public class ShopOrderPage extends BasePage {
 	/**
 	 * Finds and returns Bank Wire CheckBox.
 	 *
-	 * @return  returns Bank Wire CheckBox
+	 * @return returns Bank Wire CheckBox
 	 */
 	public WebElement getBankWireChechBox() {
 		waitForElementToAppear(bankWireCB);
 		return this.driver.findElement(bankWireCB);
 	}
-	
+
 	/**
 	 * Finds and returns I Agree Terms and Conditions Check Box.
 	 *
 	 * @return I Agree Terms and Conditions Check Box
 	 */
-	public WebElement IAgreeTandC() {
+	public WebElement getIAgreeTandC() {
 		waitForElementToAppear(iAgreeTandC);
 		return this.driver.findElement(iAgreeTandC);
 	}
-	
+
 	/**
 	 * Finds and returns Order Button on Payment form.
 	 *
@@ -209,16 +201,68 @@ public class ShopOrderPage extends BasePage {
 	}
 
 // Elements Actions Methods
-	public void inputFirstNameField(String firstName) {
+	public void inputFirstName(String firstName) {
 		getFirstNameField().sendKeys(firstName);
-		
+	}
+
+	public void inputLastName(String lastName) {
+		getLastNameField().sendKeys(lastName);
+	}
+
+	public void inputEmail(String email) {
+		getEmailField().sendKeys(email);
+	}
+
+	public void clickIAgreePrivacyCB() {
+		getIAgreePrivacy().click();
+	}
+
+	public void clickContinueBtnPersonal() {
+		getContinueBtnPersonal().click();
+	}
+
+	public void inputAddress(String address) {
+		getAddressField().sendKeys(address);
+	}
+
+	public void inputCity(String city) {
+		getCityField().sendKeys(city);
+	}
+
+	public void chooseState(String stateCode) {
+		WebElement state = getStateDropDown();
+		state.click();
+		state.sendKeys(stateCode);
+	}
+
+	public void inputPostalCode(String zip) {
+		getPostalCodeField().sendKeys(zip);
+	}
+
+	public void clickContinueBtnAddress() {
+		getContinueBtnAddress().click();
+	}
+
+	public void clickCerrierCB() {
+		getCerrierChechBox().click();
 	}
 	
-	public void inputLastNameField(String lastName) {
-		getLastNameField().sendKeys(lastName);		
+	public void clickContinueBtnShipping() {
+		getContinueBtnShipping().click();
 	}
 	
+	public void clickBankWireCB() {
+		getBankWireChechBox().click();
+	}
+	
+	public void clickIAgreeTandCCB() {
+		getIAgreeTandC().click();
+	}
+	
+	public void clickOrderBtnShipping() {
+		getOrderBtn().click();
+	}
 	
 }
 
-//
+
