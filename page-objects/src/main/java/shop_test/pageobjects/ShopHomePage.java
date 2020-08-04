@@ -23,7 +23,7 @@ public class ShopHomePage extends BasePage {
 	private static By homeContactlink = By.linkText("Contact us");
 	private static By homeProduct = By.xpath("//article[i]");
 	private static By homeProductImageLink = By.xpath("//article[i]/div[1]/a[1]");
-	private static By homeProductTitleLink = By.xpath("//article[i]/div[1]/div[1]/h3[1]/a[1]");
+	private static By homeProductTitleLink = By.xpath("//article/div[1]/div[1]/h3[1]/a[1]");
 	private static By homeProductPrice = By.xpath("//article[i]/div[1]/div[1]/div[1]/span[2]");
 
 	/**
@@ -73,7 +73,8 @@ public class ShopHomePage extends BasePage {
 	 */
 	public WebElement getHomeProductImageLink(int prodNo) {
 		waitForElementToAppear(homeProductImageLink);
-		return this.driver.findElement(homeProductImageLink);
+		List<WebElement> wbe = this.driver.findElements(homeProductImageLink);
+		return wbe.get(prodNo);
 	}
 
 	/**
