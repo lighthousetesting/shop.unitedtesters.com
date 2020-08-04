@@ -2,6 +2,7 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
+import shop_test.pageobjects.ShopOrderPage;
 
 /**
  * This class holds tests for home page
@@ -51,5 +52,13 @@ public class ShopHomePageTests extends BaseTest {
     @Ignore
     public void ShopHomePageProductDetailsTest (){
 
+    }
+
+    @Test
+    @Ignore
+    public void test1 (){
+        ShopOrderPage shopOrderPage = new ShopOrderPage(getDriver());
+        shopOrderPage.getAddressField().sendKeys();
+        shopOrderPage.getContinueBtnAddress().click();
     }
 }
