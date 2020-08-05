@@ -13,13 +13,13 @@ public class ShoppingChartPage extends BasePage {
 
 	}
 
-	private static By arrowUpBtn = By.xpath("//i[@class='material-icons touchspin-up']");
+	private static By arrowUpBtn = By.xpath("//button[@class='btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-up']");
 
 	private static By proceedBtn = By.xpath("//a[@class='btn btn-primary']");
 
-	private static By quantity = By.xpath("//input[@name='product-quantity-spin']");
+	private static By quantity = By.xpath("//li[1]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//div[1]//input[1]");
 
-	private static By deleteBtn = By.xpath("//i[@class='material-icons float-xs-left']");
+	private static By deleteBtn = By.xpath("//a[@class='remove-from-cart']");
 
 	public WebElement getArrowUpBtn() {
 		waitForElementToAppear(arrowUpBtn);
