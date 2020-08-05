@@ -15,6 +15,8 @@ public class ShoppingChartPage extends BasePage {
 
 	private static By arrowUpBtn = By.xpath("//button[@class='btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-up']");
 
+	private static By arrowDwnBtn = By.xpath("//button[@class='btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-down']");
+	
 	private static By proceedBtn = By.xpath("//a[@class='btn btn-primary']");
 
 	private static By quantity = By.xpath("//li[1]//div[1]//div[3]//div[1]//div[2]//div[1]//div[1]//div[1]//input[1]");
@@ -24,6 +26,11 @@ public class ShoppingChartPage extends BasePage {
 	public WebElement getArrowUpBtn() {
 		waitForElementToAppear(arrowUpBtn);
 		return this.driver.findElement(arrowUpBtn);
+	}
+	
+	public WebElement getArrowDwnBtn() {
+		waitForElementToAppear(arrowDwnBtn);
+		return this.driver.findElement(arrowDwnBtn);
 	}
 
 	public WebElement getProceedBtn() {
@@ -42,10 +49,15 @@ public class ShoppingChartPage extends BasePage {
 		return this.driver.findElement(deleteBtn);
 	}
 
-	public void clickgetArrowUpBtn() {
-		getProceedBtn().click();
+	public void clickArrowUpBtn() {
+		getArrowUpBtn().click();
 	}
 
+	public void clickArrowDwnBtn() {
+		getArrowDwnBtn().click();
+	}
+
+	
 	public void clickProceedBtn() {
 		getProceedBtn().click();
 	}
@@ -53,5 +65,7 @@ public class ShoppingChartPage extends BasePage {
 	public void clickDeleteBtn() {
 		getDeleteBtn().click();
 	}
+
+	
 
 }
