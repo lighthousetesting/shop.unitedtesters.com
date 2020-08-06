@@ -36,7 +36,7 @@ public class BasePage {
      *
      * @param locator Locator used to identify element
      */
-    protected void waitForElementToAppear(By locator) {
+    protected static void waitForElementToAppear(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
