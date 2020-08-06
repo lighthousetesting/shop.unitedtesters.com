@@ -5,6 +5,7 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
+import shop_test.pageobjects.ShoppingChartPage;
 
 /**
  * This class holds tests for home page
@@ -58,5 +59,12 @@ public class ShopHomePageTests extends BaseTest {
     @Ignore
     public void ShopHomePageProductDetailsTest (){
 
+    }
+
+    @Test
+    public void test1 (){
+        ShoppingChartPage shp = new ShoppingChartPage(getDriver());
+        shp.getArrowUpBtn().click();
+        // shp.arrowUpBtn;
     }
 }
