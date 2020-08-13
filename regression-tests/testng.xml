@@ -6,7 +6,7 @@
         </classes>
     </test>
 
-    <parameter name="base-url" value="https://shop.unitedtesters.com/" ></parameter>
+    <parameter name="base-url" value="https://shop.unitedtesters.com/" />
     <parameter name="page-size" value="20" />
 
 </suite>
