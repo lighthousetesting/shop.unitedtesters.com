@@ -7,6 +7,7 @@ import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShoppingChartPage;
 
+
 /**
  * This class holds tests for home page
  * @version 0.1
@@ -62,6 +63,7 @@ public class ShopHomePageTests extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void test1 (){
         ShoppingChartPage shp = new ShoppingChartPage(getDriver());
         shp.getArrowUpBtn().click();
