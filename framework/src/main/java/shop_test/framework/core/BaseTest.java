@@ -53,6 +53,7 @@ public class BaseTest {
      */
     public void open(String URL){
         driver.get(URL);
+        driver.manage().window().maximize();
     }
 
     /**
