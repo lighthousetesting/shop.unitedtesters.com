@@ -1,5 +1,4 @@
 package shop_test.tests;
-
 import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
 import org.openqa.selenium.support.PageFactory;
@@ -8,7 +7,6 @@ import org.testng.asserts.SoftAssert;
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShoppingChartPage;
-
 
 /**
  * This class holds tests for home page
@@ -45,14 +43,10 @@ public class ShopHomePageTests extends BaseTest {
     @Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-3")
     @Feature("AC02 - Maximum number of products displayed is 20;")
     public void ShopHomePageProductCountTest (@Optional("20") int expectedSize) {
-        //ShopHomePage homePage = new ShopHomePage(getDriver());
         ShopHomePage hp = PageFactory.initElements(getDriver(), ShopHomePage.class);
-
         sa.assertEquals(hp.getHomeProducts().size(), expectedSize);
-
-        //int size = homePage.getHomeProducts().size();
-        //sa.assertEquals(size, expectedSize);
         sa.assertAll();
+        Math.random();
     }
 
     /**
