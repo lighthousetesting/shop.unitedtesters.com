@@ -26,8 +26,8 @@ public class ShopProductDetailPage extends BasePage {
 	}
 	
 	private static By addBtn = By.className("btn btn-primary add-to-cart");
-	private static By qtyUp = By.className("material-icons touchspin-up");
-	private static By qtyDown = By.className("material-icons touchspin-down");
+	private static By qtyUp = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-up");
+	private static By qtyDown = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-down");
 	
 	// Elements geters methods
 	
