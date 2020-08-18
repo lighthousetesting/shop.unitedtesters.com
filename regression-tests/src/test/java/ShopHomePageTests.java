@@ -56,7 +56,7 @@ public class ShopHomePageTests extends BaseTest {
     /**
      * Validates that product properties are present on page.
      */
-    @Test (dataProvider = "dp-product", dataProviderClass = DProvider.class)
+    @Test (dataProvider = "dp-product", dataProviderClass = shop_test.dataProviders.DProvider.class)
     @Ignore
     public void ShopHomePageProductDetailsTest (){
 

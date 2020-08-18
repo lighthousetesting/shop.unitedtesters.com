@@ -66,9 +66,10 @@ public class ShopHomePageTests extends BaseTest {
 
     @Test
     @Ignore
-    public void test1 (){
+    public void test1 (int size){
         ShoppingChartPage shp = new ShoppingChartPage(getDriver());
         shp.getArrowUpBtn().click();
+        int sq = size * size;
         // shp.arrowUpBtn;
     }
 }
