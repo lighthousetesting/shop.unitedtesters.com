@@ -18,7 +18,7 @@ public class BasePage {
     private static final int POLLING = 100;
 
     protected WebDriver driver;
-    private WebDriverWait wait;
+    private static WebDriverWait wait;
 
     /**
      * Instantiate an object instance and its parent
@@ -36,7 +36,7 @@ public class BasePage {
      *
      * @param locator Locator used to identify element
      */
-    protected static void waitForElementToAppear(By locator) {
+    protected void waitForElementToAppear(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
