@@ -1,12 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Regression Suite" >
-    <test name="HomePage Tests" >
-        <classes>
-            <class name="ShopHomePageTests" />
-        </classes>
-    </test>
+<suite name="Regression Suite">
+	<parameter name="base-url"
+		value="https://shop.unitedtesters.com/" />
+	<parameter name="page-size" value="20" />
+	<test name="HomePage Tests">
+		<classes>
+			<class name="ShopHomePageTests" />
+		</classes>
+	</test>
 
-    <parameter name="base-url" value="https://shop.unitedtesters.com/" />
-    <parameter name="page-size" value="20" />
+
 
 </suite>
