@@ -1,3 +1,5 @@
+package shop_test.dataProviders;
+
 import org.testng.annotations.DataProvider;
 
 /**
@@ -15,7 +17,6 @@ public class DProvider {
         return new Object[][]{{"Value Passed"}};
     }
 
-    
     
 
     

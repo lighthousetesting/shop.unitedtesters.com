@@ -55,6 +55,9 @@ public class BaseTest {
         driver.get(URL);
     }
 
+    public void fullscreen() {
+        driver.manage().window().fullscreen();
+    }
     /**
      * Instantiate an object instance and its parent
      *
