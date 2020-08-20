@@ -40,6 +40,10 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    public String getTitle(){
+        return this.driver.getTitle();
+    }
+
     /**
      * Instruct driver to wait until specified element disappear from page.
      *
