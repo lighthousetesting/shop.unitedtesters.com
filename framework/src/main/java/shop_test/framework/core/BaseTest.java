@@ -58,6 +58,11 @@ public class BaseTest {
     public void fullscreen() {
         driver.manage().window().fullscreen();
     }
+
+    public void clear() {
+        driver.manage().deleteAllCookies();
+    }
+
     /**
      * Instantiate an object instance and its parent
      *
