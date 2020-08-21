@@ -8,6 +8,8 @@ import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShoppingChartPage;
 
+import java.util.Scanner;
+
 /**
  * This class holds tests for home page
  * @version 0.1
@@ -46,7 +48,16 @@ public class ShopHomePageTests extends BaseTest {
         ShopHomePage hp = PageFactory.initElements(getDriver(), ShopHomePage.class);
         sa.assertEquals(hp.getHomeProducts().size(), expectedSize);
         sa.assertAll();
-        Math.random();
+    }
+
+    @Test
+    @Parameters ("product-index")
+    public void clickProductTest (@Optional("1") int index){
+        ShopHomePage hp = new ShopHomePage(getDriver());
+        String productName = hp.getHomeProductName(index).toLowerCase();
+        hp.clickHomeProduct(index);
+        sa.assertEquals(hp.getTitle().toLowerCase(), productName);
+        sa.assertAll();
     }
 
     /**
