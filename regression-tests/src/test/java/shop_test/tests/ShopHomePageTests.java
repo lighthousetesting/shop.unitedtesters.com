@@ -36,7 +36,7 @@ public class ShopHomePageTests extends BaseTest {
      *
      * @param expectedSize Number of products expected to be displayed on page
      */
-    @Test
+    @Test (priority = 2)
     @Parameters ("page-size")
     @DisplayName("Home Page Product Count Test")
     @Description("Validate that expected number of products is displayed on page")
