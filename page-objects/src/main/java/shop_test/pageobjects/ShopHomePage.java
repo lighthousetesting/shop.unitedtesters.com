@@ -25,6 +25,7 @@ public class ShopHomePage extends BasePage {
 	private static By homeProductPrice = By.xpath("//span[@class='price']");
 
 	private static By homeProductLink = By.xpath("./div/a");
+	private static By homeProductImage = By.xpath("./div/a/img");
 	private static By homeProductName = By.xpath("./div/div[1]/h3");
 	private static By homeProductPriceText = By.xpath("./div/div[1]/div/span[2]");
 
@@ -70,12 +71,16 @@ public class ShopHomePage extends BasePage {
 		this.getHomeProduct(prodNo).findElement(homeProductLink).click();
 	}
 
-	public String getHomeProductName(int prodNo) {
-		return this.getHomeProduct(prodNo).findElement(homeProductName).getText();
+	public String getHomeProductName(List<WebElement> products, int prodNo) {
+		return products.get(prodNo).findElement(homeProductName).getText();
 	}
 
 	public String clickHomeProductPrice(int prodNo) {
 		return this.getHomeProduct(prodNo).findElement(homeProductPriceText).getText();
+	}
+	
+	public WebElement getHomeProductImage(List<WebElement> products, int prodNo) {
+		return products.get(prodNo).findElement(homeProductImage);
 	}
 
 	/**
