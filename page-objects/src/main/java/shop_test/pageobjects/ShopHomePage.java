@@ -27,6 +27,7 @@ public class ShopHomePage extends BasePage {
 	private static By homeProductLink = By.xpath("./div/a");
 	private static By homeProductName = By.xpath("./div/div[1]/h3");
 	private static By homeProductPriceText = By.xpath("./div/div[1]/div/span[2]");
+	private static By homeProductImage = By.xpath(".div/a/img");
 
 	/**
 	 * Instantiate an object instance and its parent
@@ -78,6 +79,9 @@ public class ShopHomePage extends BasePage {
 		return this.getHomeProduct(prodNo).findElement(homeProductPriceText).getText();
 	}
 
+	public WebElement getHomeProductImage(List<WebElement> p, int prodNo) {
+		return p.get(prodNo).findElement(homeProductImage);
+	}
 	/**
 	 * Finds and returns links to product page of all the product identified on
 	 * page. Link is represented by product image.
