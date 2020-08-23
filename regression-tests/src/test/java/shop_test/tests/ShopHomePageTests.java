@@ -1,6 +1,8 @@
 package shop_test.tests;
 import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
+
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
@@ -8,6 +10,7 @@ import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShoppingChartPage;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -77,4 +80,42 @@ public class ShopHomePageTests extends BaseTest {
         int sq = size * size;
         // shp.arrowUpBtn;
     }
+    
+    /**
+	 * Check element position and validate if product are displayed in
+	 * 4-columns matrix
+	 * 
+	 * @author Marija Rajak
+	 */
+	@Test (priority = 1)
+	@DisplayName("Home Page Product Display Test")
+	@Description("Validate that products are displayed as a matrix on page, in four columns")
+	@Epic("TP1-2")
+	@Story("R_001 - Display products on home page")
+	@Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-3")
+	@Feature("AC01 - Products are displayed in 4-column matrix")
+
+	public void testProductsDisplay() {
+
+		this.fullscreen();
+		
+		ShopHomePage homePage = new ShopHomePage(getDriver());
+		List<WebElement> products = homePage.getHomeProducts();
+
+		int[] positionsY = new int[products.size()];
+
+		for (int i = 0; i < products.size(); i++) {
+			positionsY[i] = products.get(i).getLocation().getY();
+		}
+
+		for (int j = 0; j < products.size(); j += 4) {
+			for (int k = j + 1; k < j + 4; k++) {
+
+				sa.assertEquals(positionsY[j], positionsY[k]);
+			}
+
+		}
+		sa.assertAll();
+	}
+
 }
