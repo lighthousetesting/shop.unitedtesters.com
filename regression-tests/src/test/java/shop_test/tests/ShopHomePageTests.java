@@ -42,7 +42,7 @@ public class ShopHomePageTests extends BaseTest {
     @Description("Validate that expected number of products is displayed on page")
     @Epic("TP1-2")
     @Story("R_001 - Display products on home page")
-    @Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-3")
+    @Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-11")
     @Feature("AC02 - Maximum number of products displayed is 20;")
    
     public void ShopHomePageProductCountTest (@Optional("20") int expectedSize) {
