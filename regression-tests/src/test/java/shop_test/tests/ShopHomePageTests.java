@@ -51,7 +51,7 @@ public class ShopHomePageTests extends BaseTest {
         
     	int size = homePage.getHomeProducts().size();  
     	
-    	sa.assertEquals(size, expectedSize);
+    	sa.assertTrue(size <= expectedSize);
         sa.assertAll();
     }
 
