@@ -16,13 +16,17 @@ import java.util.List;
 
 public class ShopHomePage extends BasePage {
 
-	private static By homeCartBtn = By.cssSelector("div#_desktop_cart a");
+	private static By homeCartBtn = By.cssSelector("div#_desktop_cart a"); // Alt. //*[@id="_desktop_cart"]/div/div/a
 	private static By homeProducts = By.cssSelector("section#content div.products article");
 	private static By homeHomePageLink = By.xpath("//div[@id='_desktop_logo']/h1/a");
 	private static By homeContactLink = By.linkText("Contact us");
 	private static By homeProductImageLink = By.xpath("//div[@class='thumbnail-container']/a/img");
 	private static By homeProductTitleLink = By.xpath("//h3[@class='h3 product-title']/a");
 	private static By homeProductPrice = By.xpath("//span[@class='price']");
+
+	private static By homeProductLink = By.xpath("./div/a");
+	private static By homeProductName = By.xpath("./div/div[1]/h3");
+	private static By homeProductPriceText = By.xpath("./div/div[1]/div/span[2]");
 
 	/**
 	 * Instantiate an object instance and its parent
@@ -60,6 +64,18 @@ public class ShopHomePage extends BasePage {
 	 */
 	public WebElement getHomeProduct(int prodNo) {
 		return this.getHomeProducts().get(prodNo);
+	}
+
+	public void clickHomeProduct(int prodNo) {
+		this.getHomeProduct(prodNo).findElement(homeProductLink).click();
+	}
+
+	public String getHomeProductName(int prodNo) {
+		return this.getHomeProduct(prodNo).findElement(homeProductName).getText();
+	}
+
+	public String clickHomeProductPrice(int prodNo) {
+		return this.getHomeProduct(prodNo).findElement(homeProductPriceText).getText();
 	}
 
 	/**
