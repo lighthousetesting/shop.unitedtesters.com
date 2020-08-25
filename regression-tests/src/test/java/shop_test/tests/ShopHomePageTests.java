@@ -64,10 +64,15 @@ public class ShopHomePageTests extends BaseTest {
     @Parameters ("product-index")
     
     public void clickProductTest (@Optional("1") int index){
-        ShopHomePage hp = new ShopHomePage(getDriver());
-        String productName = hp.getHomeProductName(index).toLowerCase();
-        hp.clickHomeProduct(index);
-        sa.assertEquals(hp.getTitle().toLowerCase(), productName);
+        
+    	ShopHomePage hp = new ShopHomePage(getDriver());
+        List<WebElement> products = hp.getHomeProducts();
+    	
+    	String productName = hp.getHomeProductName(products, index).toLowerCase();
+        
+    	hp.clickHomeProduct(index);
+        
+    	sa.assertEquals(hp.getTitle().toLowerCase(), productName);
         sa.assertAll();
     }
 
@@ -173,4 +178,5 @@ public class ShopHomePageTests extends BaseTest {
 			sa.assertNotEquals(price, "");
 		}
 		sa.assertAll();
+	}
 }
