@@ -8,6 +8,8 @@ import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShoppingChartPage;
 
+import java.util.Scanner;
+
 /**
  * This class holds tests for home page
  * @version 0.1
@@ -34,19 +36,34 @@ public class ShopHomePageTests extends BaseTest {
      *
      * @param expectedSize Number of products expected to be displayed on page
      */
-    @Test
+    @Test (priority = 2)
     @Parameters ("page-size")
     @DisplayName("Home Page Product Count Test")
     @Description("Validate that expected number of products is displayed on page")
     @Epic("TP1-2")
     @Story("R_001 - Display products on home page")
-    @Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-3")
+    @Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-11")
     @Feature("AC02 - Maximum number of products displayed is 20;")
+   
     public void ShopHomePageProductCountTest (@Optional("20") int expectedSize) {
-        ShopHomePage hp = PageFactory.initElements(getDriver(), ShopHomePage.class);
-        sa.assertEquals(hp.getHomeProducts().size(), expectedSize);
+        
+    	ShopHomePage homePage = new ShopHomePage(getDriver());
+        
+    	int size = homePage.getHomeProducts().size();  
+    	
+    	sa.assertTrue(size <= expectedSize);
         sa.assertAll();
-        Math.random();
+    }
+
+    @Test
+    @Parameters ("product-index")
+    
+    public void clickProductTest (@Optional("1") int index){
+        ShopHomePage hp = new ShopHomePage(getDriver());
+        String productName = hp.getHomeProductName(index).toLowerCase();
+        hp.clickHomeProduct(index);
+        sa.assertEquals(hp.getTitle().toLowerCase(), productName);
+        sa.assertAll();
     }
 
     /**
@@ -54,12 +71,14 @@ public class ShopHomePageTests extends BaseTest {
      */
     @Test (dataProvider = "dp-product", dataProviderClass = shop_test.dataProviders.DProvider.class)
     @Ignore
+   
     public void ShopHomePageProductDetailsTest (){
 
     }
 
     @Test
     @Ignore
+  
     public void test1 (int size){
         ShoppingChartPage shp = new ShoppingChartPage(getDriver());
         shp.getArrowUpBtn().click();
