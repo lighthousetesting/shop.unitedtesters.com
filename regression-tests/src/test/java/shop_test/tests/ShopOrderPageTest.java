@@ -15,7 +15,7 @@ import shop_test.pageobjects.ShoppingChartPage;
 /**
  * This class holds tests for order page
  * 
- * @version 0.3
+ * @version 0.33
  * @author Ljiljana Vrhovac-Kapor
  */
 
@@ -111,9 +111,10 @@ public class ShopOrderPageTest extends BaseTest {
 			orderPage.CheckIAgreePrivacy();
 		}
 		orderPage.getContinueBtnPersonal().click();
-		isDisplayed = orderPage.getContinueBtnAddress().isDisplayed();
+		System.out.println("nulti");
+		isDisplayed = orderPage.getContinueBtnPersonal().isDisplayed();
 		System.out.println("prvi");
-		sa.assertEquals(isDisplayed, false);
+		sa.assertEquals(isDisplayed, true);
 		
 		orderPage.CheckIAgreePrivacy();
 		orderPage.getContinueBtnPersonal().click();

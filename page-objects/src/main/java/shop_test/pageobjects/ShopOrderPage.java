@@ -21,7 +21,7 @@ public class ShopOrderPage extends BasePage {
 	private static By emailField = By.xpath("//form[@id='customer-form']//input[@name='email']");
 	private static By iAgreePrivacy = By.xpath("//input[@name='psgdpr']");
 	private static By continueBtn1 = By
-			.xpath("//footer[@class='form-footer clearfix']//button[@name='continue'][contains(text(),'Continue')]");
+			.xpath("//button[@name='continue']");
 
 	// Address form - mandatory fields locators
 	private static By addressField = By.xpath("//input[@name='address1']");
@@ -149,7 +149,7 @@ public class ShopOrderPage extends BasePage {
 	 * @return Continue Button on Address form
 	 */
 	public WebElement getContinueBtnAddress() {
-		waitForElementToAppear(continueBtn2);
+		//waitForElementToAppear(continueBtn2);
 		return this.driver.findElement(continueBtn2);
 	}
 
