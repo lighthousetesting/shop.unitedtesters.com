@@ -45,7 +45,7 @@ public class ShopHomePageTests extends BaseTest {
     @Description("Validate that expected number of products is displayed on page")
     @Epic("TP1-2")
     @Story("R_001 - Display products on home page")
-    @Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-11")
+    @Link(name = "JIRA Issue TP1-11", url = "https://lighthousetesting.atlassian.net/browse/TP1-11")
     @Feature("AC02 - Maximum number of products displayed is 20;")
    
     public void ShopHomePageProductCountTest (@Optional("20") int expectedSize) {
@@ -95,12 +95,12 @@ public class ShopHomePageTests extends BaseTest {
 	 * 
 	 * @author Marija Rajak
 	 */
-	@Test (priority = 1)
+	@Test (priority = 3)
 	@DisplayName("Home Page Product Display Test")
 	@Description("Validate that products are displayed as a matrix on page, in four columns")
 	@Epic("TP1-2")
 	@Story("R_001 - Display products on home page")
-	@Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-12")
+	@Link(name = "JIRA Issue TP1-12", url = "https://lighthousetesting.atlassian.net/browse/TP1-12")
 	@Feature("AC01 - Products are displayed in 4-column matrix")
 
 	public void testProductsDisplay() {
