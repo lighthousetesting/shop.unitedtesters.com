@@ -8,23 +8,24 @@ import org.testng.asserts.SoftAssert;
 
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
+import shop_test.pageobjects.ShopOrderPage;
 import shop_test.pageobjects.ShopProductDetailPage;
 import shop_test.pageobjects.ShoppingChartPage;
 
 /**
  * This class holds tests for order page
  * 
- * @version 0.2
+ * @version 0.3
  * @author Ljiljana Vrhovac-Kapor
  */
 
 public class ShopOrderPageTest extends BaseTest {
-	@Test
-	public void f() {
-	}
 
 	private static final SoftAssert sa = new SoftAssert();
 	private static int prNo = 5;
+	private static ShopOrderPage orderPage;
+	private boolean checkBoxStatus = true;
+	private boolean isDisplayed;
 
 	/**
 	 * Open home page, the URL is specified in Tests.xml as parameter
@@ -43,7 +44,7 @@ public class ShopOrderPageTest extends BaseTest {
 	 * Note: for version 0.2 I am testing always on product no. 5.
 	 */
 	@BeforeTest(dependsOnMethods = "openPage")
-	public void chooseProduct(int prNo) {
+	public void chooseProduct() {
 		ShopHomePage homePage = new ShopHomePage(getDriver());
 		homePage.clickHomeProduct(prNo);
 		System.out.println("chooseProduct");
@@ -89,6 +90,38 @@ public class ShopOrderPageTest extends BaseTest {
 	/**
 	 * Fill in mandatory fields in personal info form
 	 * 
+	 * @param first-name, last-name and email, to fill in personal info form
 	 */
+	@BeforeTest(dependsOnMethods = "Proceed2")
+	@Parameters({ "first-name", "last-name", "e-mail" })
+	public void fillInPersonalInfo(String firstName, String lastName, String eMail) {
+		orderPage = new ShopOrderPage(getDriver());
+		orderPage.getFirstNameField().sendKeys(firstName);
+		orderPage.getLastNameField().sendKeys(lastName);
+		orderPage.getEmailField().sendKeys(eMail);
+		System.out.println("fillInPersonalInfo");
+
+	}
+
+	@Test
+	public void checkBoxFalse() {
+		orderPage = new ShopOrderPage(getDriver());
+		checkBoxStatus = orderPage.getIAgreePrivacy().isSelected();
+		if (checkBoxStatus) {
+			orderPage.CheckIAgreePrivacy();
+		}
+		orderPage.getContinueBtnPersonal().click();
+		isDisplayed = orderPage.getContinueBtnAddress().isDisplayed();
+		System.out.println("prvi");
+		sa.assertEquals(isDisplayed, false);
+		
+		orderPage.CheckIAgreePrivacy();
+		orderPage.getContinueBtnPersonal().click();
+		isDisplayed = orderPage.getContinueBtnAddress().isDisplayed();
+		System.out.println("drugi");
+		sa.assertEquals(isDisplayed, true);
+		
+		sa.assertAll();
+	}
 
 }

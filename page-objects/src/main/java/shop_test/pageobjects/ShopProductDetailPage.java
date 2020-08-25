@@ -25,7 +25,7 @@ public class ShopProductDetailPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private static By addBtn = By.className("btn btn-primary add-to-cart");
+	private static By addBtn = By.className("add-to-cart");
 	private static By qtyUp = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-up");
 	private static By qtyDown = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-down");
 	private static By proceedBtn = By.xpath("//a[@class='btn btn-primary']");
