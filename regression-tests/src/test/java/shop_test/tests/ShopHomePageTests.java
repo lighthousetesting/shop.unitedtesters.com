@@ -100,7 +100,7 @@ public class ShopHomePageTests extends BaseTest {
 	@Description("Validate that products are displayed as a matrix on page, in four columns")
 	@Epic("TP1-2")
 	@Story("R_001 - Display products on home page")
-	@Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-3")
+	@Link(name = "JIRA Issue TP1-3", url = "https://lighthousetesting.atlassian.net/browse/TP1-12")
 	@Feature("AC01 - Products are displayed in 4-column matrix")
 
 	public void testProductsDisplay() {
