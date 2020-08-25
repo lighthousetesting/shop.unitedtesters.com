@@ -148,4 +148,6 @@ public class ShopHomePage extends BasePage {
 		return this.driver.findElement(homeContactLink);
 	}
 
+    public void clickHomeProduct(int prNo) {
+    }
 }

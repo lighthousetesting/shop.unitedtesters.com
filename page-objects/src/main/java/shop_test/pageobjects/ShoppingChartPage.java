@@ -26,7 +26,7 @@ public class ShoppingChartPage extends BasePage {
 
 	private static By continueBtn = By.xpath("//body[@id='cart']/main/section[@id='wrapper']/div[@class='container']/div[@id='content-wrapper']/section[@id='main']/div[@class='cart-grid row']/div[@class='cart-grid-body col-xs-12 col-lg-8']/a[1]");
 
-	
+	//private static By productName
 
 	public WebElement getArrowUpBtn() {
 		waitForElementToAppear(arrowUpBtn);
@@ -57,5 +57,9 @@ public class ShoppingChartPage extends BasePage {
 	public WebElement getContinueBtn() {
 		waitForElementToAppear(continueBtn);
 		return this.driver.findElement(continueBtn);
+	}
+
+    public String getShopCartProductPrice(int index) {
+		return null;
 	}
 }
