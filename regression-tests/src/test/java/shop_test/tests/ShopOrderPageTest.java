@@ -1,9 +1,6 @@
 package shop_test.tests;
 
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import shop_test.framework.core.BaseTest;
@@ -19,13 +16,10 @@ import shop_test.pageobjects.ShoppingChartPage;
  * @author Ljiljana Vrhovac-Kapor
  */
 
-public class ShopOrderPageTest extends BaseTest {
+class ShopOrderPageTests extends BaseTest {
 
 	private static final SoftAssert sa = new SoftAssert();
-	private static int prNo = 5;
 	private static ShopOrderPage orderPage;
-	private boolean checkBoxStatus = true;
-	private boolean isDisplayed;
 
 	/**
 	 * Open home page, the URL is specified in Tests.xml as parameter
@@ -46,6 +40,7 @@ public class ShopOrderPageTest extends BaseTest {
 	@BeforeTest(dependsOnMethods = "openPage")
 	public void chooseProduct() {
 		ShopHomePage homePage = new ShopHomePage(getDriver());
+		int prNo = 5;
 		homePage.clickHomeProduct(prNo);
 		System.out.println("chooseProduct");
 	}
@@ -88,9 +83,11 @@ public class ShopOrderPageTest extends BaseTest {
 	}
 
 	/**
-	 * Fill in mandatory fields in personal info form
+	 * Fill in mandatory fields in personal info form
 	 * 
-	 * @param first-name, last-name and email, to fill in personal info form
+	 * @param firstName to fill in personal info form
+	 * @param lastName to fill in personal info form
+	 * @param eMail to fill in personal info form
 	 */
 	@BeforeTest(dependsOnMethods = "Proceed2")
 	@Parameters({ "first-name", "last-name", "e-mail" })
@@ -106,13 +103,13 @@ public class ShopOrderPageTest extends BaseTest {
 	@Test
 	public void checkBoxFalse() {
 		orderPage = new ShopOrderPage(getDriver());
-		checkBoxStatus = orderPage.getIAgreePrivacy().isSelected();
+		boolean checkBoxStatus = orderPage.getIAgreePrivacy().isSelected();
 		if (checkBoxStatus) {
 			orderPage.CheckIAgreePrivacy();
 		}
 		orderPage.getContinueBtnPersonal().click();
 		System.out.println("nulti");
-		isDisplayed = orderPage.getContinueBtnPersonal().isDisplayed();
+		boolean isDisplayed = orderPage.getContinueBtnPersonal().isDisplayed();
 		System.out.println("prvi");
 		sa.assertEquals(isDisplayed, true);
 		

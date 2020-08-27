@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 
 /**
  * This is a page object model for Home page
@@ -15,7 +14,7 @@ import org.testng.annotations.BeforeTest;
  */
 public class BaseTest {
 
-    private WebDriver driver;
+    private static WebDriver driver;
 
     /**
      * Instantiate a Chrome web driver
@@ -49,10 +48,10 @@ public class BaseTest {
     /**
      * Instantiate an object instance and its parent
      *
-     * @param URL URL of page to open
+     * @param url URL of page to open
      */
-    public void open(String URL){
-        driver.get(URL);
+    public void open(String url){
+        driver.get(url);
     }
 
     public void fullscreen() {
