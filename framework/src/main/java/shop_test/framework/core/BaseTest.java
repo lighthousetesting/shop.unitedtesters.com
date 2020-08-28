@@ -1,6 +1,7 @@
 package shop_test.framework.core;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.DriverManagerType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,11 +21,11 @@ public class BaseTest {
      * Instantiate a Chrome web driver
      */
     @BeforeSuite
-    public void beforeSuite() {
+    public static void beforeSuite() {
         System.setProperty("headless", "false"); // You can set this property elsewhere
         String headless = System.getProperty("headless");
 
-        ChromeDriverManager.chromedriver();
+        ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
         if("true".equals(headless)) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--headless");
@@ -38,7 +39,7 @@ public class BaseTest {
      * Close web driver after all test suite is executed.
      */
     @AfterSuite
-    public void afterSuite() {
+    public static void afterSuite() {
         if(null != driver) {
             driver.close();
             driver.quit();
