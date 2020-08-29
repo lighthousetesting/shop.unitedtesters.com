@@ -1,11 +1,14 @@
 package shop_test.tests;
+
 import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShoppingChartPage;
@@ -18,7 +21,7 @@ import java.util.Scanner;
  * @version 0.1
  * @author Sinisa Vrhovac
  */
-public class ShopHomePageTests extends BaseTest {
+class ShopHomePageTests extends BaseTest {
 
     private static final SoftAssert sa = new SoftAssert();
 
@@ -27,7 +30,7 @@ public class ShopHomePageTests extends BaseTest {
      *
      * @param URL The page URL to open before each test
      */
-    @BeforeTest
+    @BeforeMethod ()
     @Parameters ("base-url")
     public void openPage (@Optional("https://shop.unitedtesters.com/") String URL){
         this.open(URL);
