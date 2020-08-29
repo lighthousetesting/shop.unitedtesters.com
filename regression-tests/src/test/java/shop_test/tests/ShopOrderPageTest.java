@@ -3,6 +3,12 @@ package shop_test.tests;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Link;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShopOrderPage;
@@ -12,7 +18,7 @@ import shop_test.pageobjects.ShoppingChartPage;
 /**
  * This class holds tests for order page
  * 
- * @version 0.33
+ * @version 1.0
  * @author Ljiljana Vrhovac-Kapor
  */
 
@@ -35,7 +41,7 @@ class ShopOrderPageTests extends BaseTest {
 	/**
 	 * click on one random product (product details page opens)
 	 *
-	 * Note: for version 0.2 I am testing always on product no. 5.
+	 * Note: for version 1.0 I am testing always on product no. 5.
 	 */
 	@BeforeTest(dependsOnMethods = "openPage")
 	public void chooseProduct() {
@@ -99,8 +105,14 @@ class ShopOrderPageTests extends BaseTest {
 		System.out.println("fillInPersonalInfo");
 
 	}
-
-	@Test
+	
+	@Test 
+	@DisplayName("checkBoxFalse")
+	@Description("Validate that check-box 'I agree to the terms and conditions and the privacy policy' is mandatory")
+	@Epic("TP1-10")
+	@Story("R_003 - As a customer, I want to complete the purchase of the selected product")
+	@Link(name = "JIRA Issue TP1-10", url = "https://lighthousetesting.atlassian.net/browse/TP1-10")
+	@Feature("AC06 - Validate that agreeing to \"I agree to the terms and conditions and the privacy policy\" is mandatory;")
 	public void checkBoxFalse() {
 		orderPage = new ShopOrderPage(getDriver());
 		boolean checkBoxStatus = orderPage.getIAgreePrivacy().isSelected();
