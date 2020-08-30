@@ -66,9 +66,8 @@ public class ShopHomePageTests extends BaseTest {
 	public void clickProductTest(@Optional("1") int index) {
 
 		ShopHomePage hp = new ShopHomePage(getDriver());
-		List<WebElement> products = hp.getHomeProducts();
-
-		String productName = hp.getHomeProductName(products, index).toLowerCase();
+		
+		String productName = hp.getHomeProductName(index).toLowerCase();
 
 		hp.clickHomeProduct(index);
 
@@ -116,7 +115,7 @@ public class ShopHomePageTests extends BaseTest {
 
 		ShopHomePage homePage = new ShopHomePage(getDriver());
 		List<WebElement> products = homePage.getHomeProducts();
-
+		
 		int[] positionsY = new int[products.size()];
 
 		for (int i = 0; i < products.size(); i++) {
@@ -149,21 +148,22 @@ public class ShopHomePageTests extends BaseTest {
 	public void ShopHomePageProductRepresentationTest() {
 
 		ShopHomePage homePage = new ShopHomePage(getDriver());
-		List<WebElement> products = homePage.getHomeProducts();
-
+		
 		String imageSrc;
 		String title;
 		String price;
+		
+		int numberOfProducts = homePage.getProductsList().size();
 
-		for (int i = 0; i < products.size(); i++) {
+		for (int i = 0; i < numberOfProducts; i++) {
 
-			imageSrc = homePage.getHomeProductImageSrc(products, i);
+			imageSrc = homePage.getHomeProductImageSrc(i);
 			sa.assertNotEquals(imageSrc, "");
 
-			title = homePage.getHomeProductName(products, i);
+			title = homePage.getHomeProductName(i);
 			sa.assertNotEquals(title, "");
 
-			price = homePage.getHomeProductPrice(products, i);
+			price = homePage.getHomeProductPrice(i);
 			sa.assertNotEquals(price, "");
 		}
 		
