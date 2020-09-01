@@ -30,7 +30,7 @@ class ShopHomePageTest extends BaseTest {
      *
      * @param URL The page URL to open before each test
      */
-    @BeforeTest ()
+    @BeforeMethod ()
     @Parameters ("base-url")
     public void openPage (@Optional("https://shop.unitedtesters.com/") String URL){
         this.open(URL);
