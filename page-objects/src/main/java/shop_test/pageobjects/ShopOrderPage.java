@@ -39,7 +39,7 @@ public class ShopOrderPage extends BasePage {
 
 	// Payment FOrm - Locators
 	private static By bankWireCB = By.id("payment-option-2");
-	private static By iAgreeTandC = By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]");
+	private static By iAgreeTandC = By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]']");
 	private static By orderBtn = By.xpath("//button[@class='btn btn-primary center-block']");
 	
 
@@ -173,7 +173,7 @@ public class ShopOrderPage extends BasePage {
 	 * @return returns Cerrier CheckBox
 	 */
 	public WebElement getCerrierChechBox() {
-		waitForElementToAppear(MyCarrierCB);
+		//waitForElementToAppear(MyCarrierCB);
 		return this.driver.findElement(MyCarrierCB);
 	}
 
