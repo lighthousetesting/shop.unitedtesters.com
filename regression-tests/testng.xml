@@ -1,18 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Regression Suite">
+<!-- BeforeSuite -->
+<suite name="Regression Suite" >
 
-	<test name="HomePage Tests">
-		<classes>
-			<class name="shop_test.tests.ShopHomePageTests" />
-		</classes>
-	</test>
+    <!-- BeforeTest -->
+    <test name="HomePage Tests" >
+        <classes>
 
-	<test name="OrderPage Tests">
-		<classes>
-			<class name="shop_test.tests.ShopOrderPageTests" />
-		</classes>
-	</test>
+            <!-- BeforeClass -->
+            <class name="shop_test.tests.ShopHomePageTests" />
+                <!-- BeforeMethod - Before each method annotated by @Test -->
+                    <!-- each @Test annotated method -->
+                <!-- AfterMethod - After each method annotated by @Test  -->
+            <!-- AfterClass -->
 
 	<parameter name="base-url" value="https://shop.unitedtesters.com/" />
 	<parameter name="page-size" value="20" />
@@ -26,4 +26,10 @@
 	<parameter name="city" value="Grad"/>
 	<parameter name="postal-code" value="11000"/>
 
+    <parameter name="base-url" value="https://shop.unitedtesters.com/" />
+    <parameter name="page-size" value="20" />
+    <parameter name="test" value="20" />
+    <parameter name="product-index" value="1" />
+
 </suite>
+<!-- AfterSuite -->

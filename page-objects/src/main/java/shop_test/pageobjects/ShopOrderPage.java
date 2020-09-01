@@ -23,7 +23,7 @@ public class ShopOrderPage extends BasePage {
 	private static By emailField = By.xpath("//form[@id='customer-form']//input[@name='email']");
 	private static By iAgreePrivacy = By.xpath("//input[@name='psgdpr']");
 	private static By continueBtn1 = By
-			.xpath("//button[@name='continue']");
+			.xpath("//footer[@class='form-footer clearfix']//button[@name='continue'][contains(text(),'Continue')]");
 
 	// Address form - mandatory fields locators
 	private static By addressField = By.xpath("//input[@name='address1']");
@@ -39,7 +39,7 @@ public class ShopOrderPage extends BasePage {
 
 	// Payment FOrm - Locators
 	private static By bankWireCB = By.id("payment-option-2");
-	private static By iAgreeTandC = By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]']");
+	private static By iAgreeTandC = By.id("conditions_to_approve[terms-and-conditions]");
 	private static By orderBtn = By.xpath("//button[@class='btn btn-primary center-block']");
 	
 
@@ -83,19 +83,16 @@ public class ShopOrderPage extends BasePage {
 		waitForElementToAppear(emailField);
 		return this.driver.findElement(emailField);
 	}
-	
-	
+
 	/**
 	 * Finds and returns I Agree Privacy Check Box.
 	 *
 	 * @return I Agree Privacy Check Box
 	 */
 	public WebElement getIAgreePrivacy() {
-		//waitForElementToAppear(iAgreePrivacy);
+		waitForElementToAppear(iAgreePrivacy);
 		return this.driver.findElement(iAgreePrivacy);
 	}
-	
-	
 
 	/**
 	 * Finds and returns Continue Button on Personal Info form.
@@ -163,7 +160,7 @@ public class ShopOrderPage extends BasePage {
 	 * @return Continue Button on Address form
 	 */
 	public WebElement getContinueBtnAddress() {
-		//waitForElementToAppear(continueBtn2);
+		waitForElementToAppear(continueBtn2);
 		return this.driver.findElement(continueBtn2);
 	}
 
@@ -197,9 +194,6 @@ public class ShopOrderPage extends BasePage {
 		return this.driver.findElement(bankWireCB);
 	}
 
-	
-	
-	
 	/**
 	 * Finds and returns I Agree Terms and Conditions Check Box.
 	 *
@@ -210,7 +204,6 @@ public class ShopOrderPage extends BasePage {
 		return this.driver.findElement(iAgreeTandC);
 	}
 
-
 	/**
 	 * Finds and returns Order Button on Payment form.
 	 *
@@ -220,22 +213,4 @@ public class ShopOrderPage extends BasePage {
 		//waitForElementToAppear(orderBtn);
 		return this.driver.findElement(orderBtn);
 	}
-	
-	/**
-	 * Checks the "I Agree Terms and Conditions" Check Box.
-	 * 
-	 */
-	public void CheckIAgreeTandC() {
-		getIAgreeTandC().click();
-	}
-	
-	/**
-	 * Checks the "I Agree Privacy" Check Box.
-	 * 
-	 */
-	public void CheckIAgreePrivacy() {
-		getIAgreePrivacy().click();
-	}
-	
-	
 }

@@ -10,7 +10,7 @@ import shop_test.framework.core.BasePage;
  * This is a page object model for Product detail page
  * 
  * @author Ljiljana Vrhovac-Kapor
- * @version 0.2
+ * @version 0.1
  */
 
 public class ShopProductDetailPage extends BasePage {
@@ -25,30 +25,20 @@ public class ShopProductDetailPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private static By addBtn = By.className("add-to-cart");
+	private static By addBtn = By.className("btn btn-primary add-to-cart");
 	private static By qtyUp = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-up");
 	private static By qtyDown = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-down");
-	private static By proceedBtn = By.xpath("//a[@class='btn btn-primary']");
+	
 	// Elements geters methods
 	
 	/**
-	 * Finds and returns Add to Cart Btn 
+	 * Finds and returns touchspin up btn.
 	 *
-	 * @return Add to Cart Btn
+	 * @return touchspin up btn
 	 */
 	public WebElement addToCartBtn() {
 		waitForElementToAppear(addBtn);
 		return this.driver.findElement(addBtn);
-	}
-	
-	/**
-	 * Finds and returns Proceed to Check Out Btn 
-	 *
-	 * @return Proceed to Check Out Btn
-	 */
-	public WebElement proceedToCOBtn() {
-		waitForElementToAppear(proceedBtn);
-		return this.driver.findElement(proceedBtn);
 	}
 	
 		/**
