@@ -105,7 +105,7 @@ public class ShopHomePage extends BasePage {
 	 * Finds and returns particular product's image link from the product element. The product is specified
 	 * by it's ordinal number on page.
 	 *
-	 * @return Product Image Link
+	 * @return Link to product image
 	 */
 	public String getHomeProductImageSrc(int prodNo) {
 		return homePageProducts.get(prodNo).findElement(homeProductImage).getAttribute("src");
@@ -116,10 +116,10 @@ public class ShopHomePage extends BasePage {
 	 * specified by ordinal number on the list of represented products. Link is
 	 * represented by product image.
 	 *
-	 * @return Product image as a link
+	 * @return Product image as a link to product page
 	 */
 	public WebElement getHomeProductImageLink(int prodNo) {
-		return this.driver.findElements(homeProductImageLink).get(prodNo);
+		return homePageProducts.get(prodNo).findElement(homeProductImage);
 	}
 
 	
