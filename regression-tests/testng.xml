@@ -1,19 +1,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-
-<suite name="Regression Suite">
-
-	<test name="HomePage Tests">
-		<classes>
-			<class name="shop_test.tests.ShopHomePageTests" />
+<suite name="Regression Suite" >
+    <test name="HomePage Tests" >
+        <classes>
+            <class name="shop_test.tests.ShopHomePageTest" />
 		</classes>
 	</test>
-
 	<test name="OrderPage Tests">
 		<classes>
-			<class name="shop_test.tests.ShopOrderPageTests" />
+			<class name="shop_test.tests.ShopOrderPageTest"></class>
 		</classes>
 	</test>
-
 	<parameter name="base-url" value="https://shop.unitedtesters.com/" />
 	<parameter name="page-size" value="20" />
 	<parameter name="test" value="20" />
@@ -22,5 +18,13 @@
 	<parameter name="first-name" value="Marko"/>
 	<parameter name="last-name" value="Markovic"/>
 	<parameter name="e-mail" value="Marko.Markovic@gmail.com"/>
+	<parameter name="address" value="Adresa probna"/>
+	<parameter name="city" value="Grad"/>
+	<parameter name="postal-code" value="11000"/>
+
+    <parameter name="base-url" value="https://shop.unitedtesters.com/" />
+    <parameter name="page-size" value="20" />
+    <parameter name="test" value="20" />
+    <parameter name="product-index" value="1" />
 
 </suite>
