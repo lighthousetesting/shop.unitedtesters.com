@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @version 0.1
  * @author Sinisa Vrhovac
  */
-class ShopHomePageTests extends BaseTest {
+class ShopHomePageTest extends BaseTest {
 
     private static final SoftAssert sa = new SoftAssert();
 
