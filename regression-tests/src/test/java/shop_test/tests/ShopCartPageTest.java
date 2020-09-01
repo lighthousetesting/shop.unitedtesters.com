@@ -42,28 +42,32 @@ import shop_test.pageobjects.ShoppingChartPage;
         
 
 
-        @BeforeTest
+       /* @BeforeTest
         public void chooseProduct(int prNo) {
             ShopHomePage homePage = new ShopHomePage(getDriver());
             homePage.clickHomeProduct(prNo);
 
         }
-
-
-
-
-
+*/
 
 
 
             @Test
                public void checkProductPrice(@Optional("2") int prNo){
-                ShopHomePage hp = new ShopHomePage(getDrver());
-                ShoppingChartPage scp = new ShoppingChartPage(getDriver());
-                WebElement productPrice = hp.getHomeProductPrice(prNo);
+                ShopHomePage hp = new ShopHomePage(getDriver());
+                String proPrice = hp.getHomeProductName(2);
+                hp.clickHomeProductPrice(2);
+                ShopProductDetailPage dp= new ShopProductDetailPage(getDriver());
+                dp.addToCartBtn().click();
+                dp.p
+            // ShopProductDetailPage detailPage = new ShopProductDetailPage(getDriver());
+
+
+               /* ShoppingChartPage scp = new ShoppingChartPage(getDriver());
+                String productPrice = hp.getHomeProductPrice(prNo);
                 String ShopCartProductPrice = scp.getShopCartProductPrice(prNo);
-                sa.assertEquals(ShopCartProductPrice, productPrice);
-                sa.assertAll();
+                sa.assertEquals(proPrice, NOVA CENA);
+                sa.assertAll();*/
             }
 
         private WebDriver getDrver() {
