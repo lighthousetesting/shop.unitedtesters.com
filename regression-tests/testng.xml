@@ -2,12 +2,12 @@
 <suite name="Regression Suite" >
     <test name="HomePage Tests" >
         <classes>
-            <class name="shop_test.tests.ShopHomePageTests" />
+            <class name="shop_test.tests.ShopHomePageTest" />
 		</classes>
 	</test>
 	<test name="OrderPage Tests">
 		<classes>
-			<class name="shop_test.tests.ShopOrderPageTests"></class>
+			<class name="shop_test.tests.ShopOrderPageTest"></class>
 		</classes>
 	</test>
 	<parameter name="base-url" value="https://shop.unitedtesters.com/" />

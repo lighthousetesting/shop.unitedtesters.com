@@ -25,7 +25,7 @@ import shop_test.pageobjects.ShoppingChartPage;
  * @author Ljiljana Vrhovac-Kapor
  */
 
-class ShopOrderPageTests extends BaseTest {
+class ShopOrderPageTest extends BaseTest {
 
 	private static final SoftAssert sa = new SoftAssert();
 	private static ShopOrderPage orderPage;
