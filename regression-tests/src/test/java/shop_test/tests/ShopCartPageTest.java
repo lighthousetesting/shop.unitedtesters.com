@@ -50,8 +50,6 @@ import shop_test.pageobjects.ShoppingChartPage;
         }
 */
 
-
-
             @Test
                public void checkProductPrice(@Optional("2") int prNo){
                 ShopHomePage hp = new ShopHomePage(getDriver());
@@ -59,7 +57,7 @@ import shop_test.pageobjects.ShoppingChartPage;
                 hp.clickHomeProductPrice(2);
                 ShopProductDetailPage dp= new ShopProductDetailPage(getDriver());
                 dp.addToCartBtn().click();
-                dp.p
+              //  dp.
             // ShopProductDetailPage detailPage = new ShopProductDetailPage(getDriver());
 
 
@@ -70,9 +68,7 @@ import shop_test.pageobjects.ShoppingChartPage;
                 sa.assertAll();*/
             }
 
-        private WebDriver getDrver() {
-            return null;
-        }
+
 
     }
 
