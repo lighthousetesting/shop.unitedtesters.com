@@ -1,27 +1,26 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<!-- BeforeSuite -->
-<suite name="Regression Suite" >
+<suite name="Regression Suite">
 
-    <!-- BeforeTest -->
-    <test name="HomePage Tests" >
-        <classes>
+	<test name="HomePage Tests">
+		<classes>
+			<class name="shop_test.tests.ShopHomePageTests" />
+		</classes>
+	</test>
 
-            <!-- BeforeClass -->
-            <class name="shop_test.tests.ShopHomePageTests" />
-                <!-- BeforeMethod - Before each method annotated by @Test -->
-                    <!-- each @Test annotated method -->
-                <!-- AfterMethod - After each method annotated by @Test  -->
-            <!-- AfterClass -->
+	<test name="OrderPage Tests">
+		<classes>
+			<class name="shop_test.tests.ShopOrderPageTests" />
+		</classes>
+	</test>
 
-        </classes>
-    </test>
-    <!-- AfterTest -->
-
-    <parameter name="base-url" value="https://shop.unitedtesters.com/" />
-    <parameter name="page-size" value="20" />
-    <parameter name="test" value="20" />
-    <parameter name="product-index" value="1" />
+	<parameter name="base-url" value="https://shop.unitedtesters.com/" />
+	<parameter name="page-size" value="20" />
+	<parameter name="test" value="20" />
+	<parameter name="product-index" value="1" /> 
+	
+	<parameter name="first-name" value="Marko"/>
+	<parameter name="last-name" value="Markovic"/>
+	<parameter name="e-mail" value="Marko.Markovic@gmail.com"/>
 
 </suite>
-<!-- AfterSuite -->
