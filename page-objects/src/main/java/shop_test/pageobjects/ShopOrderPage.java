@@ -1,10 +1,12 @@
 package shop_test.pageobjects;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import shop_test.framework.core.BasePage;
+
 
 /**
  * This is a page object model for Order page
@@ -27,6 +29,7 @@ public class ShopOrderPage extends BasePage {
 	private static By addressField = By.xpath("//input[@name='address1']");
 	private static By cityField = By.xpath("//input[@name='city']");
 	private static By stateDropDown = By.xpath("//select[@name='id_state']");
+	private static By arizonaState = By.xpath("//option[contains(text(),'Arizona')]");
 	private static By postalCodeField = By.xpath("//input[@name='postcode']");
 	private static By continueBtn2 = By.xpath("//button[@name='confirm-addresses']");
 
@@ -36,8 +39,9 @@ public class ShopOrderPage extends BasePage {
 
 	// Payment FOrm - Locators
 	private static By bankWireCB = By.id("payment-option-2");
-	private static By iAgreeTandC = By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]");
+	private static By iAgreeTandC = By.xpath("//input[@id='conditions_to_approve[terms-and-conditions]']");
 	private static By orderBtn = By.xpath("//button[@class='btn btn-primary center-block']");
+	
 
 	/**
 	 * Instantiate an object instance and its parent
@@ -131,8 +135,18 @@ public class ShopOrderPage extends BasePage {
 	public WebElement getStateDropDown() {
 		waitForElementToAppear(stateDropDown);
 		return this.driver.findElement(stateDropDown);
+		
+		
 	}
 
+	public void clickStateDropDownOption() {
+		getStateDropDown().click();
+	driver.findElement(arizonaState).click();
+		
+		
+	}
+	
+	
 	/**
 	 * Finds and returns Postal Code Field.
 	 *
@@ -179,7 +193,7 @@ public class ShopOrderPage extends BasePage {
 	 * @return returns Bank Wire CheckBox
 	 */
 	public WebElement getBankWireChechBox() {
-		waitForElementToAppear(bankWireCB);
+		//waitForElementToAppear(bankWireCB);
 		return this.driver.findElement(bankWireCB);
 	}
 
@@ -192,7 +206,7 @@ public class ShopOrderPage extends BasePage {
 	 * @return I Agree Terms and Conditions Check Box
 	 */
 	public WebElement getIAgreeTandC() {
-		waitForElementToAppear(iAgreeTandC);
+		//waitForElementToAppear(iAgreeTandC);
 		return this.driver.findElement(iAgreeTandC);
 	}
 
@@ -203,7 +217,7 @@ public class ShopOrderPage extends BasePage {
 	 * @return Order Button on Payment form
 	 */
 	public WebElement getOrderBtn() {
-		waitForElementToAppear(orderBtn);
+		//waitForElementToAppear(orderBtn);
 		return this.driver.findElement(orderBtn);
 	}
 	

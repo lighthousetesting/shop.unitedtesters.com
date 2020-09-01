@@ -22,5 +22,8 @@
 	<parameter name="first-name" value="Marko"/>
 	<parameter name="last-name" value="Markovic"/>
 	<parameter name="e-mail" value="Marko.Markovic@gmail.com"/>
+	<parameter name="address" value="Adresa probna"/>
+	<parameter name="city" value="Grad"/>
+	<parameter name="postal-code" value="11000"/>
 
 </suite>
