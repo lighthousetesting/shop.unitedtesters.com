@@ -133,7 +133,6 @@ class ShopOrderPageTests extends BaseTest {
 		boolean isDisplayed = orderPage.getContinueBtnPersonal().isDisplayed();
 		System.out.println("prvi");
 		sa.assertEquals(isDisplayed, true);
-
 		orderPage.CheckIAgreePrivacy();
 		orderPage.getContinueBtnPersonal().click();
 		isDisplayed = orderPage.getContinueBtnAddress().isDisplayed();
