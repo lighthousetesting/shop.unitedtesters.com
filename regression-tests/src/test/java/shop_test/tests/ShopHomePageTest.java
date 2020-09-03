@@ -129,6 +129,7 @@ class ShopHomePageTest extends BaseTest {
 		}
 		sa.assertAll();
 	}
+	
 	/**
 	 * Check if product is represented by image, title and price.
 	 *
@@ -189,5 +190,6 @@ class ShopHomePageTest extends BaseTest {
 			}
 		sa.assertAll();
 	}
+
 
 }
