@@ -16,6 +16,7 @@ import java.util.List;
 
 public class ShopHomePage extends BasePage {
 
+	// Locators for finding elements on the home page
 	private static By homeCartBtn = By.cssSelector("div#_desktop_cart a"); // Alt. //*[@id="_desktop_cart"]/div/div/a
 	private static By homeProducts = By.cssSelector("section#content div.products article");
 	private static By homeHomePageLink = By.xpath("//div[@id='_desktop_logo']/h1/a");
@@ -24,9 +25,14 @@ public class ShopHomePage extends BasePage {
 	private static By homeProductTitleLink = By.xpath("//h3[@class='h3 product-title']/a");
 	private static By homeProductPrice = By.xpath("//span[@class='price']");
 
+	// Locators for finding elements inside product element
 	private static By homeProductLink = By.xpath("./div/a");
 	private static By homeProductName = By.xpath("./div/div[1]/h3");
 	private static By homeProductPriceText = By.xpath("./div/div[1]/div/span[2]");
+	private static By homeProductImage = By.xpath("./div/a/img");
+
+	// List of all products displayed on home page
+	private List<WebElement> homePageProducts = this.getHomeProducts();
 
 	/**
 	 * Instantiate an object instance and its parent
@@ -66,27 +72,43 @@ public class ShopHomePage extends BasePage {
 		return this.getHomeProducts().get(prodNo);
 	}
 
+	/**
+	 * Finds and clicks particular product's link to product page. The product is
+	 * specified by it's ordinal number on page.
+	 *
+	 */
 	public void clickHomeProduct(int prodNo) {
 		this.getHomeProduct(prodNo).findElement(homeProductLink).click();
 	}
 
+	/**
+	 * Finds and returns particular product's title from the product element. The
+	 * product is specified by it's ordinal number on page.
+	 *
+	 * @return Product Title
+	 */
 	public String getHomeProductName(int prodNo) {
-		return this.getHomeProduct(prodNo).findElement(homeProductName).getText();
-	}
-
-	public String clickHomeProductPrice(int prodNo) {
-		return this.getHomeProduct(prodNo).findElement(homeProductPriceText).getText();
+		return homePageProducts.get(prodNo).findElement(homeProductName).getText();
 	}
 
 	/**
-	 * Finds and returns links to product page of all the product identified on
-	 * page. Link is represented by product image.
+	 * Finds and returns particular product's price from the product element. The
+	 * product is specified by it's ordinal number on page.
 	 *
-	 * @return List of image links
+	 * @return Product Price
 	 */
-	public List<WebElement> getHomeProductImageLinks() {
-		return this.driver.findElements(homeProductImageLink);
+	public String getHomeProductPrice(int prodNo) {
+		return homePageProducts.get(prodNo).findElement(homeProductPriceText).getText();
+	}
 
+	/**
+	 * Finds and returns particular product's image link from the product element.
+	 * The product is specified by it's ordinal number on page.
+	 *
+	 * @return Link to product image
+	 */
+	public String getHomeProductImageSrc(int prodNo) {
+		return homePageProducts.get(prodNo).findElement(homeProductImage).getAttribute("src");
 	}
 
 	/**
@@ -94,20 +116,10 @@ public class ShopHomePage extends BasePage {
 	 * specified by ordinal number on the list of represented products. Link is
 	 * represented by product image.
 	 *
-	 * @return Product image as a link
+	 * @return Product image as a link to product page
 	 */
 	public WebElement getHomeProductImageLink(int prodNo) {
-		return this.getHomeProductImageLinks().get(prodNo);
-	}
-
-	/**
-	 * Finds and returns links to product page of all the product identified on
-	 * page. Link is represented by product name.
-	 *
-	 * @return List of name links
-	 */
-	public List<WebElement> getHomeProductNameLinks() {
-		return this.driver.findElements(homeProductTitleLink);
+		return homePageProducts.get(prodNo).findElement(homeProductImage);
 	}
 
 	/**
@@ -118,28 +130,7 @@ public class ShopHomePage extends BasePage {
 	 * @return Product name as a link
 	 */
 	public WebElement getHomeProductNameLink(int prodNo) {
-		return this.getHomeProductNameLinks().get(prodNo);
-	}
-
-	/**
-	 * Finds and returns elements containing product prices, for all products
-	 * identified on page.
-	 * 
-	 * @return List of product prices
-	 */
-	public List<WebElement> getHomeProductPrices() {
-		return this.driver.findElements(homeProductPrice);
-
-	}
-
-	/**
-	 * Finds and returns element containing product price of the particular product.
-	 * Product is specified by ordinal number on the list of represented products.
-	 * 
-	 * @return Product price
-	 */
-	public WebElement getHomeProductPrice(int prodNo) {
-		return this.getHomeProductPrices().get(prodNo);
+		return this.driver.findElements(homeProductTitleLink).get(prodNo);
 	}
 
 	/**
@@ -162,6 +153,15 @@ public class ShopHomePage extends BasePage {
 	public WebElement getHomeContactUsLink() {
 		waitForElementToAppear(homeContactLink);
 		return this.driver.findElement(homeContactLink);
+	}
+
+	/**
+	 * Returns list of products displayed on home page.
+	 *
+	 * @return Product List
+	 */
+	public List<WebElement> getProductsList() {
+		return homePageProducts;
 	}
 
 }
