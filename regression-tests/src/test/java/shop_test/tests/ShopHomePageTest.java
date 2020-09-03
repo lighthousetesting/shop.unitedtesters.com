@@ -99,7 +99,7 @@ class ShopHomePageTest extends BaseTest {
 	 * 
 	 * @author Marija Rajak
 	 */
-	@Test (priority = 3)
+	@Test (priority = 1)
 	@DisplayName("Home Page Product Display Test")
 	@Description("Validate that products are displayed as a matrix on page, in four columns")
 	@Epic("TP1-2")
@@ -135,7 +135,7 @@ class ShopHomePageTest extends BaseTest {
 	 *
 	 * 
 	 */
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3)
 	@DisplayName("Home Page Product representation")
 	@Description("Validate that every products is represented by image, title and price")
 	@Epic("TP1-2")
@@ -168,7 +168,19 @@ class ShopHomePageTest extends BaseTest {
 		sa.assertAll();
 	}
 	
-	@Test
+	/**
+	 * Check if product image is link to Product detail page
+	 *
+	 * 
+	 */
+	@Test(priority = 4)
+	@DisplayName("Product image as a link")
+	@Description("Validate that clicling on the product image navigates to the product's detail page")
+	@Epic("TP1-2")
+	@Story("R_001 - Display products on home page")
+	@Link(name = "JIRA Issue TP1-16", url = "https://lighthousetesting.atlassian.net/browse/TP1-16")
+	@Feature("R001(discussion)-Product image and title are clickable links ")
+
 	public void imageLinkTest() {
 		
 		ShopHomePage homePage = new ShopHomePage(getDriver());
@@ -185,9 +197,12 @@ class ShopHomePageTest extends BaseTest {
 			
 			String prodName2 = prodDetailPage.getProductTitle().toLowerCase();
 			
+			sa.assertEquals(prodName, prodName2);
+			
 			this.getDriver().navigate().back();
 			homePage = new ShopHomePage(getDriver());
 			}
+		
 		sa.assertAll();
 	}
 
