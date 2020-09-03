@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ShopHomePage extends BasePage {
 
-	// Locators for finf=ding elements on the home page
+	// Locators for finding elements on the home page
 	private static By homeCartBtn = By.cssSelector("div#_desktop_cart a"); // Alt. //*[@id="_desktop_cart"]/div/div/a
 	private static By homeProducts = By.cssSelector("section#content div.products article");
 	private static By homeHomePageLink = By.xpath("//div[@id='_desktop_logo']/h1/a");
@@ -32,7 +32,7 @@ public class ShopHomePage extends BasePage {
 	private static By homeProductImage = By.xpath("./div/a/img");
 	
 	// List of all products displayed on home page
-	private List<WebElement> homePageProducts = this.getHomeProducts();
+	private List<WebElement> homeProductsList = this.getHomeProducts();
 
 	/**
 	 * Instantiate an object instance and its parent
@@ -88,7 +88,7 @@ public class ShopHomePage extends BasePage {
 	 * @return Product Title
 	 */
 	public String getHomeProductName(int prodNo) {
-		return homePageProducts.get(prodNo).findElement(homeProductName).getText();
+		return homeProductsList.get(prodNo).findElement(homeProductName).getText();
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class ShopHomePage extends BasePage {
 	 * @return Product Price
 	 */
 	public String getHomeProductPrice(int prodNo) {
-		return homePageProducts.get(prodNo).findElement(homeProductPriceText).getText();
+		return homeProductsList.get(prodNo).findElement(homeProductPriceText).getText();
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class ShopHomePage extends BasePage {
 	 * @return Link to product image
 	 */
 	public String getHomeProductImageSrc(int prodNo) {
-		return homePageProducts.get(prodNo).findElement(homeProductImage).getAttribute("src");
+		return homeProductsList.get(prodNo).findElement(homeProductImage).getAttribute("src");
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class ShopHomePage extends BasePage {
 	 * @return Product image as a link to product page
 	 */
 	public WebElement getHomeProductImageLink(int prodNo) {
-		return homePageProducts.get(prodNo).findElement(homeProductImage);
+		return homeProductsList.get(prodNo).findElement(homeProductImage);
 	}
 
 	
@@ -163,7 +163,7 @@ public class ShopHomePage extends BasePage {
 	 * @return Product List
 	 */
 	public List<WebElement> getProductsList() {
-		return homePageProducts;
+		return homeProductsList;
 	}
 
 }
