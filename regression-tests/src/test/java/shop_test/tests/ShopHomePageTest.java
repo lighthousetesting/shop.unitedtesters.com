@@ -99,7 +99,7 @@ class ShopHomePageTest extends BaseTest {
 	 * 
 	 * @author Marija Rajak
 	 */
-	@Test (priority = 3)
+	@Test (priority = 1)
 	@DisplayName("Home Page Product Display Test")
 	@Description("Validate that products are displayed as a matrix on page, in four columns")
 	@Epic("TP1-2")
@@ -135,7 +135,7 @@ class ShopHomePageTest extends BaseTest {
 	 *
 	 * 
 	 */
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3)
 	@DisplayName("Home Page Product representation")
 	@Description("Validate that every products is represented by image, title and price")
 	@Epic("TP1-2")
@@ -168,28 +168,5 @@ class ShopHomePageTest extends BaseTest {
 		sa.assertAll();
 	}
 	
-	@Test
-	public void imageLinkTest() {
-		
-		ShopHomePage homePage = new ShopHomePage(getDriver());
-		int prodNumber = homePage.getHomeProducts().size();
-		
-		for (int i = 0; i < prodNumber; i++) {
-			
-			String prodName = homePage.getHomeProductName(i).toLowerCase();
-			homePage.getHomeProductImageLink(i).click();
-			ShopProductDetailPage prodDetailPage = new ShopProductDetailPage(getDriver());
-			
-			//String pageTitle = homePage.getTitle().toLowerCase();
-			//sa.assertEquals(prodName, pageTitle); test pada jer naslov stranice nije identican s nazivom proizvoda, iako se prava stranica otvara
-			
-			String prodName2 = prodDetailPage.getProductTitle().toLowerCase();
-			
-			this.getDriver().navigate().back();
-			homePage = new ShopHomePage(getDriver());
-			}
-		sa.assertAll();
-	}
-
-
+	
 }
