@@ -57,7 +57,8 @@ class ShopOrderPageTest extends BaseTest {
 		int prNo = (int) (Math.random() * numberOfProducts);
 
 		homePage.clickHomeProduct(prNo);
-		System.out.println("chooseProduct");
+		this.logger.info("chooseProduct");
+		//System.out.println("chooseProduct");
 	}
 
 	/**
@@ -106,7 +107,11 @@ class ShopOrderPageTest extends BaseTest {
 	 */
 	@BeforeTest(dependsOnMethods = "Proceed2")
 	@Parameters({ "first-name", "last-name", "e-mail" })
-	public void fillInPersonalInfo(String firstName, String lastName, String eMail) {
+	public void fillInPersonalInfo(
+			@Optional("John") String firstName,
+			@Optional("Doe") String lastName,
+			@Optional("john.doe@mail.com") String eMail
+	) {
 		orderPage = new ShopOrderPage(getDriver());
 		orderPage.getFirstNameField().sendKeys(firstName);
 		orderPage.getLastNameField().sendKeys(lastName);

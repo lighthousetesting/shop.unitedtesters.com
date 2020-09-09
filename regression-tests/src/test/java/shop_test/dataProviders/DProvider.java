@@ -14,7 +14,13 @@ public class DProvider {
 
     @DataProvider(name = "dp-product")
     public Object[][] dpMethod() {
-        return new Object[][]{{"Value Passed"}};
+        return new Object[][]{
+                {
+                    "name",
+                    "bingo",
+                    ""
+                }
+        };
     }
 
     
