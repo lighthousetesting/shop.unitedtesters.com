@@ -29,6 +29,8 @@ public class ShopProductDetailPage extends BasePage {
 	private static By qtyUp = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-up");
 	private static By qtyDown = By.className("btn btn-touchspin js-touchspin bootstrap-touchspin-down");
 	private static By proceedBtn = By.xpath("//a[@class='btn btn-primary']");
+	
+	
 	// Elements geters methods
 	
 	/**
@@ -70,7 +72,6 @@ public class ShopProductDetailPage extends BasePage {
 			waitForElementToAppear(qtyDown);
 			return this.driver.findElement(qtyDown);
 		}
-		
 		
 
 }

@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
+import shop_test.pageobjects.ShopProductDetailPage;
 import shop_test.pageobjects.ShoppingChartPage;
 
 import java.util.List;
@@ -98,7 +99,7 @@ class ShopHomePageTest extends BaseTest {
 	 * 
 	 * @author Marija Rajak
 	 */
-	@Test (priority = 3)
+	@Test (priority = 1)
 	@DisplayName("Home Page Product Display Test")
 	@Description("Validate that products are displayed as a matrix on page, in four columns")
 	@Epic("TP1-2")
@@ -128,5 +129,44 @@ class ShopHomePageTest extends BaseTest {
 		}
 		sa.assertAll();
 	}
+	
+	/**
+	 * Check if product is represented by image, title and price.
+	 *
+	 * 
+	 */
+	@Test(priority = 3)
+	@DisplayName("Home Page Product representation")
+	@Description("Validate that every products is represented by image, title and price")
+	@Epic("TP1-2")
+	@Story("R_001 - Display products on home page")
+	@Link(name = "JIRA Issue TP1-13", url = "https://lighthousetesting.atlassian.net/browse/TP1-13")
+	@Feature("AC03 - Product is represented by image, title and price")
 
+	public void ShopHomePageProductRepresentationTest() {
+
+		ShopHomePage homePage = new ShopHomePage(getDriver());
+		
+		String imageSrc;
+		String title;
+		String price;
+		
+		int numberOfProducts = homePage.getProductsList().size();
+
+		for (int i = 0; i < numberOfProducts; i++) {
+
+			imageSrc = homePage.getHomeProductImageSrc(i);
+			sa.assertNotEquals(imageSrc, "");
+
+			title = homePage.getHomeProductName(i);
+			sa.assertNotEquals(title, "");
+
+			price = homePage.getHomeProductPrice(i);
+			sa.assertNotEquals(price, "");
+		}
+		
+		sa.assertAll();
+	}
+	
+	
 }
