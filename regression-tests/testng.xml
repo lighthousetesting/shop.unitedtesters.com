@@ -13,7 +13,7 @@
 	</test>
 
 	<parameter name="base-url" value="https://shop.unitedtesters.com/" />
-	<parameter name="page-size" value="22" />
+	<parameter name="page-size" value="20" />
 	<parameter name="test" value="20" />
 	<parameter name="shop_test.domain.core.product-index" value="1" />
 
