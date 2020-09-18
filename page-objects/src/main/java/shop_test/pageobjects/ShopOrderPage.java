@@ -22,8 +22,7 @@ public class ShopOrderPage extends BasePage {
 	private static By lastNameField = By.xpath("//input[@name='lastname']");
 	private static By emailField = By.xpath("//form[@id='customer-form']//input[@name='email']");
 	private static By iAgreePrivacy = By.xpath("//input[@name='psgdpr']");
-	private static By continueBtn1 = By
-			.xpath("//button[@name='continue']");
+	private static By continueBtn1 = By.xpath("//button[@name='continue']");
 
 	// Address form - mandatory fields locators
 	private static By addressField = By.xpath("//input[@name='address1']");

@@ -3,6 +3,7 @@ package shop_test.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import shop_test.domain.core.Product;
 import shop_test.framework.core.BasePage;
 import java.util.List;
 
@@ -30,6 +31,9 @@ public class ShopHomePage extends BasePage {
 	private static By homeProductName = By.xpath("./div/div[1]/h3");
 	private static By homeProductPriceText = By.xpath("./div/div[1]/div/span[2]");
 	private static By homeProductImage = By.xpath("./div/a/img");
+// //*[@id="content"]/section/div/article[3]/div/div[1]/h3/a
+	// find product by ID
+	private String homeProductId = "//section[@id='content']//article[@data-id-product='%d']";
 
 	// List of all products displayed on home page
 	private List<WebElement> homePageProducts = this.getHomeProducts();
@@ -70,6 +74,23 @@ public class ShopHomePage extends BasePage {
 	 */
 	public WebElement getHomeProduct(int prodNo) {
 		return this.getHomeProducts().get(prodNo);
+	}
+
+	/**
+	 * Finds and returns particular product from the page.
+	 * The product is specified by it's ID.
+	 *
+	 * @return Product
+	 */
+	public Product getHomeProductById(int id){
+		String locator = String.format(homeProductId, id);
+		WebElement prod = driver.findElement(By.xpath(locator));
+
+		String name = prod.findElement(homeProductName).getText();
+		String price = prod.findElement(homeProductPriceText).getText();
+		String image = prod.findElement(homeProductImage).getAttribute("src");
+
+		return new Product(id, name, price, image);
 	}
 
 	/**

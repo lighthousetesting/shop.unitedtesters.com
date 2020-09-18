@@ -9,13 +9,13 @@ import org.testng.asserts.SoftAssert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import shop_test.domain.core.Product;
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
 import shop_test.pageobjects.ShopProductDetailPage;
 import shop_test.pageobjects.ShoppingChartPage;
 
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * This class holds tests for home page
@@ -23,8 +23,6 @@ import java.util.Scanner;
  * @author Sinisa Vrhovac
  */
 class ShopHomePageTest extends BaseTest {
-
-    private static final SoftAssert sa = new SoftAssert();
 
     /**
      * Open home page, the URL is specified in Tests.xml as parameter
@@ -51,21 +49,26 @@ class ShopHomePageTest extends BaseTest {
     @Story("R_001 - Display products on home page")
     @Link(name = "JIRA Issue TP1-11", url = "https://lighthousetesting.atlassian.net/browse/TP1-11")
     @Feature("AC02 - Maximum number of products displayed is 20;")
-   
+	@Severity(SeverityLevel.CRITICAL)
     public void ShopHomePageProductCountTest (@Optional("20") int expectedSize) {
-        
+		SoftAssert sa = new SoftAssert();
     	ShopHomePage homePage = new ShopHomePage(getDriver());
-        
-    	int size = homePage.getHomeProducts().size();  
-    	
-    	sa.assertTrue(size <= expectedSize);
+    	int size = homePage.getHomeProducts().size();
+    	sa.assertEquals(size, expectedSize);
         sa.assertAll();
     }
 
     @Test
     @Parameters ("product-index")
-    
-    public void clickProductTest (@Optional("1") int index){
+	@DisplayName("Validate product link leads to detail page")
+	@Description("Validate that home page product link leads to product details page")
+	@Epic("TP1-1")
+	@Story("R_001 - Display products on home page")
+	@Feature("R001 TC005 Product title is link to product detail page")
+	@Link(name = "JIRA Issue TP1-17", url = "https://lighthousetesting.atlassian.net/browse/TP1-17")
+	@Severity(SeverityLevel.MINOR)
+	public void clickProductTest (@Optional("1") int index){
+		SoftAssert sa = new SoftAssert();
         ShopHomePage hp = new ShopHomePage(getDriver());
         String productName = hp.getHomeProductName(index).toLowerCase();
         hp.clickHomeProduct(index);
@@ -75,17 +78,32 @@ class ShopHomePageTest extends BaseTest {
 
     /**
      * Validates that product properties are present on page.
+	 * @param id Product ID, find product by ID
+	 * @param name Name of the product
+	 * @param price Price string of product including currency
+	 * @param image Full URL of product image
      */
-    @Test (dataProvider = "dp-product", dataProviderClass = shop_test.dataProviders.DProvider.class)
-    @Ignore
-   
-    public void ShopHomePageProductDetailsTest (){
+    @Test (priority = 1, dataProvider = "dp-product", dataProviderClass = shop_test.dataProviders.DProvider.class)
+	@DisplayName("Display products on home page")
+	@Description("Validate that product is presented with correct name, price and image")
+	@Epic("TP1-1")
+	@Story("R_001 - Display products on home page")
+	@Feature("AC03 - Proizvod je predstavljen sa slikom proizvoda, nazivom proizvoda i cenom;")
+	@Link(name = "JIRA Issue TP1-13", url = "https://lighthousetesting.atlassian.net/browse/TP1-13")
+	@Severity(SeverityLevel.BLOCKER)
+	public void ShopHomePageProductDetailsTest (int id, String name, String price, String image){
+		SoftAssert sa = new SoftAssert();
+		ShopHomePage hp = new ShopHomePage(getDriver());
+		Product product = hp.getHomeProductById(id);
 
+		sa.assertEquals(product.getName(), name);
+		sa.assertEquals(product.getPrice(), price);
+		sa.assertEquals(product.getImage(), image);
+		sa.assertAll();
     }
 
     @Test
     @Ignore
-  
     public void test1 (int size){
         ShoppingChartPage shp = new ShoppingChartPage(getDriver());
         shp.getArrowUpBtn().click();
@@ -106,14 +124,11 @@ class ShopHomePageTest extends BaseTest {
 	@Story("R_001 - Display products on home page")
 	@Link(name = "JIRA Issue TP1-12", url = "https://lighthousetesting.atlassian.net/browse/TP1-12")
 	@Feature("AC01 - Products are displayed in 4-column matrix")
-
 	public void testProductsDisplay() {
-
+		SoftAssert sa = new SoftAssert();
 		this.fullscreen();
-		
 		ShopHomePage homePage = new ShopHomePage(getDriver());
 		List<WebElement> products = homePage.getHomeProducts();
-
 		int[] positionsY = new int[products.size()];
 
 		for (int i = 0; i < products.size(); i++) {
@@ -122,10 +137,8 @@ class ShopHomePageTest extends BaseTest {
 
 		for (int j = 0; j < products.size(); j += 4) {
 			for (int k = j + 1; k < j + 4; k++) {
-
 				sa.assertEquals(positionsY[j], positionsY[k]);
 			}
-
 		}
 		sa.assertAll();
 	}
@@ -142,31 +155,16 @@ class ShopHomePageTest extends BaseTest {
 	@Story("R_001 - Display products on home page")
 	@Link(name = "JIRA Issue TP1-13", url = "https://lighthousetesting.atlassian.net/browse/TP1-13")
 	@Feature("AC03 - Product is represented by image, title and price")
-
 	public void ShopHomePageProductRepresentationTest() {
-
+		SoftAssert sa = new SoftAssert();
 		ShopHomePage homePage = new ShopHomePage(getDriver());
-		
-		String imageSrc;
-		String title;
-		String price;
-		
 		int numberOfProducts = homePage.getProductsList().size();
-
 		for (int i = 0; i < numberOfProducts; i++) {
-
-			imageSrc = homePage.getHomeProductImageSrc(i);
-			sa.assertNotEquals(imageSrc, "");
-
-			title = homePage.getHomeProductName(i);
-			sa.assertNotEquals(title, "");
-
-			price = homePage.getHomeProductPrice(i);
-			sa.assertNotEquals(price, "");
+			sa.assertNotEquals(homePage.getHomeProductName(i), "");
+			sa.assertNotEquals(homePage.getHomeProductPrice(i), "");
+			sa.assertNotEquals(homePage.getHomeProductImageSrc(i), "");
 		}
-		
 		sa.assertAll();
 	}
-	
 	
 }

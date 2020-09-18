@@ -27,7 +27,6 @@ import shop_test.pageobjects.ShoppingChartPage;
 
 class ShopOrderPageTest extends BaseTest {
 
-	private static final SoftAssert sa = new SoftAssert();
 	private static ShopOrderPage orderPage;
 
 	/**
@@ -57,7 +56,8 @@ class ShopOrderPageTest extends BaseTest {
 		int prNo = (int) (Math.random() * numberOfProducts);
 
 		homePage.clickHomeProduct(prNo);
-		System.out.println("chooseProduct");
+		this.logger.info("chooseProduct");
+		//System.out.println("chooseProduct");
 	}
 
 	/**
@@ -69,7 +69,8 @@ class ShopOrderPageTest extends BaseTest {
 	public void addToCart() {
 		ShopProductDetailPage detailPage = new ShopProductDetailPage(getDriver());
 		detailPage.addToCartBtn().click();
-		System.out.println("addToCart");
+		this.logger.info("addToCart");
+		//System.out.println("addToCart");
 
 	}
 
@@ -82,7 +83,8 @@ class ShopOrderPageTest extends BaseTest {
 	public void Proceed1() {
 		ShopProductDetailPage detailPage = new ShopProductDetailPage(getDriver());
 		detailPage.proceedToCOBtn().click();
-		System.out.println("Proceed1");
+		this.logger.info("Proceed1");
+		//System.out.println("Proceed1");
 	}
 
 	/**
@@ -94,7 +96,8 @@ class ShopOrderPageTest extends BaseTest {
 	public void Proceed2() {
 		ShoppingChartPage cartPage = new ShoppingChartPage(getDriver());
 		cartPage.getProceedBtn().click();
-		System.out.println("Proceed2");
+		this.logger.info("Proceed2");
+		//System.out.println("Proceed2");
 	}
 
 	/**
@@ -106,12 +109,17 @@ class ShopOrderPageTest extends BaseTest {
 	 */
 	@BeforeTest(dependsOnMethods = "Proceed2")
 	@Parameters({ "first-name", "last-name", "e-mail" })
-	public void fillInPersonalInfo(String firstName, String lastName, String eMail) {
+	public void fillInPersonalInfo(
+			@Optional("John") String firstName,
+			@Optional("Doe") String lastName,
+			@Optional("john.doe@mail.com") String eMail
+	) {
 		orderPage = new ShopOrderPage(getDriver());
 		orderPage.getFirstNameField().sendKeys(firstName);
 		orderPage.getLastNameField().sendKeys(lastName);
 		orderPage.getEmailField().sendKeys(eMail);
-		System.out.println("fillInPersonalInfo");
+		this.logger.info("fillInPersonalInfo");
+		//System.out.println("fillInPersonalInfo");
 
 	}
 
@@ -123,26 +131,29 @@ class ShopOrderPageTest extends BaseTest {
 	@Link(name = "JIRA Issue TP1-10", url = "https://lighthousetesting.atlassian.net/browse/TP1-10")
 	@Feature("AC06 - Validate that agreeing to \"I agree to the terms and conditions and the privacy policy\" is mandatory;")
 	public void checkBoxPrivacyFalse() {
+		SoftAssert sa = new SoftAssert();
 		orderPage = new ShopOrderPage(getDriver());
 		boolean checkBoxStatus = orderPage.getIAgreePrivacy().isSelected();
 		if (checkBoxStatus) {
 			orderPage.CheckIAgreePrivacy();
 		}
 		orderPage.getContinueBtnPersonal().click();
-		System.out.println("nulti");
+		this.logger.info("nulti");
+		//System.out.println("nulti");
 		boolean isDisplayed = orderPage.getContinueBtnPersonal().isDisplayed();
-		System.out.println("prvi");
+		this.logger.info("prvi");
+		//System.out.println("prvi");
 		sa.assertEquals(isDisplayed, true);
 		orderPage.CheckIAgreePrivacy();
 		orderPage.getContinueBtnPersonal().click();
 		isDisplayed = orderPage.getContinueBtnAddress().isDisplayed();
-		System.out.println("drugi");
+		this.logger.info("drugi");
+		//System.out.println("drugi");
 		sa.assertEquals(isDisplayed, true);
-
 		sa.assertAll();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, dataProvider = "dp-user", dataProviderClass = shop_test.dataProviders.DProvider.class)
 	@DisplayName("checkBoxToSFalse")
 	@Description("Validate that check-box 'I agree to the terms and conditions and the privacy policy' is mandatory")
 	@Epic("TP1-15")
@@ -150,7 +161,12 @@ class ShopOrderPageTest extends BaseTest {
 	@Link(name = "JIRA Issue TP1-15", url = "https://lighthousetesting.atlassian.net/secure/RapidBoard.jspa?rapidView=1&projectKey=TP1&modal=detail&selectedIssue=TP1-15")
 	@Feature("AC07 - Validate that it is not possible to complete a purchase if the customer has not agreed with \"I agree to the terms of service and will adhere to them unconditionally.\" by checking checkbox")
 	@Parameters({ "address", "city", "postal-code" })
-	public void checkBoxToSFalse(String address, String city, String postalCode) {
+	public void checkBoxToSFalse(
+			@Optional("Adresa 1") String address,
+			@Optional("City") String city,
+			@Optional("100000") String postalCode) {
+
+		SoftAssert sa = new SoftAssert();
 		orderPage = new ShopOrderPage(getDriver());
 
 		// fill in mandatory address field - part of test precondition
@@ -159,12 +175,14 @@ class ShopOrderPageTest extends BaseTest {
 		orderPage.clickStateDropDownOption();
 		orderPage.getPostalCodeField().sendKeys(postalCode);
 		orderPage.getContinueBtnAddress().click();
-		System.out.println("fillInAddress");
+		this.logger.info("fillInAddress");
+		//System.out.println("fillInAddress");
 
 		// shipping method continue - part of test precondition
 
 		orderPage.getContinueBtnShipping().click();
-		System.out.println("fillInShipping");
+		this.logger.info("fillInShipping");
+		//System.out.println("fillInShipping");
 
 		// Validate that Pay by Bank Wire Check Box is selected - part of test
 		// precondition
@@ -173,7 +191,8 @@ class ShopOrderPageTest extends BaseTest {
 		if (!checkBoxStatus) {
 			orderPage.getBankWireChechBox().click();
 		}
-		System.out.println("BankWire kliknuto");
+		this.logger.info("BankWire kliknuto");
+		//System.out.println("BankWire kliknuto");
 
 		/*
 		 * validate that when
@@ -184,7 +203,8 @@ class ShopOrderPageTest extends BaseTest {
 		if (checkBoxStatus) {
 			orderPage.getIAgreeTandC().click();
 		}
-		System.out.println("ToS nije cekirano");
+		this.logger.info("ToS nije cekirano");
+		//System.out.println("ToS nije cekirano");
 
 		sa.assertFalse(orderPage.getOrderBtn().isEnabled());
 

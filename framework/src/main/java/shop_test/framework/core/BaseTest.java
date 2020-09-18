@@ -5,6 +5,8 @@ import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -16,6 +18,7 @@ import org.testng.annotations.BeforeSuite;
 public class BaseTest {
 
     private static WebDriver driver;
+    protected final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
     /**
      * Instantiate a Chrome web driver
