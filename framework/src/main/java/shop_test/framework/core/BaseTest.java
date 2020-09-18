@@ -25,7 +25,7 @@ public class BaseTest {
      */
     @BeforeSuite
     public static void beforeSuite() {
-        System.setProperty("headless", "false"); // You can set this property elsewhere
+        //System.setProperty("headless", "true"); // You can set this property elsewhere
         String headless = System.getProperty("headless");
 
         ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
