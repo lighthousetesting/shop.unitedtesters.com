@@ -2,6 +2,8 @@ package shop_test.dataProviders;
 
 import org.testng.annotations.DataProvider;
 
+import java.lang.reflect.Method;
+
 /**
  * This is a data provider class to feed data into test on test execution.
  * The data provide returns a 2D array of object where first dimension represent
@@ -13,20 +15,45 @@ import org.testng.annotations.DataProvider;
 public class DProvider {
 
     @DataProvider(name = "dp-product")
-    public Object[][] dpMethod() {
+    public Object[][] dpProduct() {
         return new Object[][]{
-                {
-                    "name",
-                    "bingo",
-                    ""
-                }
+            {
+                19,
+                "Customizable Mug",
+                "$13.90",
+                "https://shop.unitedtesters.com/22-home_default/customizable-mug.jpg"
+            },
+            {
+                17,
+                "Brown Bear Notebook",
+                "$12.90",
+                "https://shop.unitedtesters.com/19-home_default/brown-bear-notebook.jpg"
+            },
         };
     }
 
-    
+    @DataProvider(name = "dp-user")
+    public Object[][] dpUser(Method m) {
 
-    
-    
-    
-    
+        switch (m.getName()) {
+            case "fillInPersonalInfo":
+                return new Object[][]{
+                    {
+                        "Marko",
+                        "Markovic",
+                        "Marko.Markovic@gmail.com"
+                    }
+                };
+
+            case "checkBoxToSFalse":
+                return new Object[][]{
+                    {
+                        "Adresa probna",
+                        "Grad",
+                        "11000"
+                    },
+                };
+        }
+        return null;
+    }
 }
