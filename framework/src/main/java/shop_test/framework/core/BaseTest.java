@@ -32,6 +32,8 @@ public class BaseTest {
         if("true".equals(headless)) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--no-sandbox");
+            chromeOptions.addArguments("--disable-dev-shm-usage");
             driver = new ChromeDriver(chromeOptions);
         } else {
             driver = new ChromeDriver();
