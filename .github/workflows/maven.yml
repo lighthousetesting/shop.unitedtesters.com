@@ -11,6 +11,8 @@ on:
 
 jobs:
   build:
+    env:
+      headless: true
 
     runs-on: ubuntu-latest
 
@@ -24,3 +26,4 @@ jobs:
       run: mvn -B package --file pom.xml
       env:
         headless: true
+      
