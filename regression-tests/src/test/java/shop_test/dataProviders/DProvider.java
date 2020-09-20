@@ -36,7 +36,7 @@ public class DProvider {
     public Object[][] dpUser(Method m) {
 
         switch (m.getName()) {
-            case "fillInPersonalInfo":
+            case "checkBoxPrivacyFalse":
                 return new Object[][]{
                     {
                         "Marko",

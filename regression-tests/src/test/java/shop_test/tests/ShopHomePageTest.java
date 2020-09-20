@@ -7,12 +7,10 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 import shop_test.domain.core.Product;
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
-import shop_test.pageobjects.ShopProductDetailPage;
 import shop_test.pageobjects.ShoppingChartPage;
 
 import java.util.List;

@@ -1,8 +1,5 @@
 package shop_test.tests;
 
-import java.util.Random;
-
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -38,15 +35,7 @@ class ShopOrderPageTest extends BaseTest {
 	@Parameters("base-url")
 	public void openPage(@Optional("https://shop.unitedtesters.com/") String URL) {
 		this.open(URL);
-	}
 
-	/**
-	 * click on one random product (product details page opens)
-	 *
-	 * Note: for version 2.0 I introduces system to choose random number of product
-	 */
-	@BeforeTest(dependsOnMethods = "openPage")
-	public void chooseProduct() {
 		ShopHomePage homePage = new ShopHomePage(getDriver());
 
 		// GEt the number of products on page, -1, to get into range of indexes:
@@ -58,62 +47,43 @@ class ShopOrderPageTest extends BaseTest {
 		homePage.clickHomeProduct(prNo);
 		this.logger.info("chooseProduct");
 		//System.out.println("chooseProduct");
-	}
 
-	/**
-	 * click on Add to Cart Btn on product detail page
-	 * 
-	 * 
-	 */
-	@BeforeTest(dependsOnMethods = "chooseProduct")
-	public void addToCart() {
 		ShopProductDetailPage detailPage = new ShopProductDetailPage(getDriver());
 		detailPage.addToCartBtn().click();
-		this.logger.info("addToCart");
+		this.logger.info("addToCartBtn");
 		//System.out.println("addToCart");
 
-	}
-
-	/**
-	 * click on ProceedBtn on product detail page
-	 * 
-	 * 
-	 */
-	@BeforeTest(dependsOnMethods = "addToCart")
-	public void Proceed1() {
-		ShopProductDetailPage detailPage = new ShopProductDetailPage(getDriver());
 		detailPage.proceedToCOBtn().click();
-		this.logger.info("Proceed1");
+		this.logger.info("proceedToCOBtn");
 		//System.out.println("Proceed1");
-	}
 
-	/**
-	 * click on ProceedBtn on Shopping Cart Page
-	 * 
-	 * 
-	 */
-	@BeforeTest(dependsOnMethods = "Proceed1")
-	public void Proceed2() {
 		ShoppingChartPage cartPage = new ShoppingChartPage(getDriver());
 		cartPage.getProceedBtn().click();
-		this.logger.info("Proceed2");
+		this.logger.info("getProceedBtn");
 		//System.out.println("Proceed2");
 	}
 
 	/**
 	 * Fill in mandatory fields in personal info form
+	 * Validate that privacy agreement is checked
 	 * 
 	 * @param firstName to fill in personal info form
 	 * @param lastName  to fill in personal info form
 	 * @param eMail     to fill in personal info form
 	 */
-	@BeforeTest(dependsOnMethods = "Proceed2")
-	@Parameters({ "first-name", "last-name", "e-mail" })
-	public void fillInPersonalInfo(
+	@Test(priority = 1, dataProvider = "dp-user", dataProviderClass = shop_test.dataProviders.DProvider.class)
+	@DisplayName("checkBoxPrivacyFalse")
+	@Description("Validate that check-box 'I agree to the terms and conditions and the privacy policy' is mandatory")
+	@Epic("TP1-10")
+	@Story("R_003 - As a customer, I want to complete the purchase of the selected product")
+	@Link(name = "JIRA Issue TP1-10", url = "https://lighthousetesting.atlassian.net/browse/TP1-10")
+	@Feature("AC06 - Validate that agreeing to \"I agree to the terms and conditions and the privacy policy\" is mandatory;")
+	public void checkBoxPrivacyFalse(
 			@Optional("John") String firstName,
 			@Optional("Doe") String lastName,
-			@Optional("john.doe@mail.com") String eMail
-	) {
+			@Optional("john.doe@mail.com") String eMail)
+	{
+		SoftAssert sa = new SoftAssert();
 		orderPage = new ShopOrderPage(getDriver());
 		orderPage.getFirstNameField().sendKeys(firstName);
 		orderPage.getLastNameField().sendKeys(lastName);
@@ -121,18 +91,6 @@ class ShopOrderPageTest extends BaseTest {
 		this.logger.info("fillInPersonalInfo");
 		//System.out.println("fillInPersonalInfo");
 
-	}
-
-	@Test(priority = 0)
-	@DisplayName("checkBoxPrivacyFalse")
-	@Description("Validate that check-box 'I agree to the terms and conditions and the privacy policy' is mandatory")
-	@Epic("TP1-10")
-	@Story("R_003 - As a customer, I want to complete the purchase of the selected product")
-	@Link(name = "JIRA Issue TP1-10", url = "https://lighthousetesting.atlassian.net/browse/TP1-10")
-	@Feature("AC06 - Validate that agreeing to \"I agree to the terms and conditions and the privacy policy\" is mandatory;")
-	public void checkBoxPrivacyFalse() {
-		SoftAssert sa = new SoftAssert();
-		orderPage = new ShopOrderPage(getDriver());
 		boolean checkBoxStatus = orderPage.getIAgreePrivacy().isSelected();
 		if (checkBoxStatus) {
 			orderPage.CheckIAgreePrivacy();
@@ -140,6 +98,7 @@ class ShopOrderPageTest extends BaseTest {
 		orderPage.getContinueBtnPersonal().click();
 		this.logger.info("nulti");
 		//System.out.println("nulti");
+
 		boolean isDisplayed = orderPage.getContinueBtnPersonal().isDisplayed();
 		this.logger.info("prvi");
 		//System.out.println("prvi");
@@ -153,14 +112,13 @@ class ShopOrderPageTest extends BaseTest {
 		sa.assertAll();
 	}
 
-	@Test(priority = 1, dataProvider = "dp-user", dataProviderClass = shop_test.dataProviders.DProvider.class)
+	@Test(priority = 2, dataProvider = "dp-user", dataProviderClass = shop_test.dataProviders.DProvider.class)
 	@DisplayName("checkBoxToSFalse")
 	@Description("Validate that check-box 'I agree to the terms and conditions and the privacy policy' is mandatory")
 	@Epic("TP1-15")
 	@Story("R_003 - As a customer, I want to complete the purchase of the selected product")
 	@Link(name = "JIRA Issue TP1-15", url = "https://lighthousetesting.atlassian.net/secure/RapidBoard.jspa?rapidView=1&projectKey=TP1&modal=detail&selectedIssue=TP1-15")
 	@Feature("AC07 - Validate that it is not possible to complete a purchase if the customer has not agreed with \"I agree to the terms of service and will adhere to them unconditionally.\" by checking checkbox")
-	@Parameters({ "address", "city", "postal-code" })
 	public void checkBoxToSFalse(
 			@Optional("Adresa 1") String address,
 			@Optional("City") String city,
