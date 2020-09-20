@@ -26,7 +26,8 @@ public class BaseTest {
     @BeforeSuite
     public static void beforeSuite() {
         //System.setProperty("headless", "true"); // You can set this property elsewhere
-        String headless = System.getProperty("headless");
+        //String headless = System.getProperty("headless", "false");
+        String headless = System.getenv("headless");
 
         ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
         if("true".equals(headless)) {
@@ -34,6 +35,7 @@ public class BaseTest {
             chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--no-sandbox");
             chromeOptions.addArguments("--disable-dev-shm-usage");
+            chromeOptions.addArguments("--window-size=1920x1080"); //should be enabled for Jenkins
             driver = new ChromeDriver(chromeOptions);
         } else {
             driver = new ChromeDriver();

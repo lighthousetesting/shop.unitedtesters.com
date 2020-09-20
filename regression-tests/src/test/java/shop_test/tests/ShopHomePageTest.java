@@ -7,12 +7,10 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 import shop_test.domain.core.Product;
 import shop_test.framework.core.BaseTest;
 import shop_test.pageobjects.ShopHomePage;
-import shop_test.pageobjects.ShopProductDetailPage;
 import shop_test.pageobjects.ShoppingChartPage;
 
 import java.util.List;
@@ -124,7 +122,6 @@ class ShopHomePageTest extends BaseTest {
 	@Story("R_001 - Display products on home page")
 	@Link(name = "JIRA Issue TP1-12", url = "https://lighthousetesting.atlassian.net/browse/TP1-12")
 	@Feature("AC01 - Products are displayed in 4-column matrix")
-	@Ignore
 	public void testProductsDisplay() {
 		SoftAssert sa = new SoftAssert();
 		this.fullscreen();
