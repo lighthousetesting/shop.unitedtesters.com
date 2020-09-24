@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ServiceLevel Suite" >
+    <test name="Service Test">
+        <classes>
+            <class name="shop_test.tests.ShopServiceTest"/>
+        </classes>
+    </test>
+
+    <parameter name="id" value="17"/>
+    <parameter name="product_name" value="Brown bear notebook"/>
+    <parameter name="country" value="RS"/>
+    <parameter name="zipcode" value="11000"/>
+    <parameter name="city" value="Beograd"/>
+</suite>
